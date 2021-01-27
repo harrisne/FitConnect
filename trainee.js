@@ -101,7 +101,7 @@ class Inputs extends Component {
               borderRadius: 13,
               borderColor: "black",
               fontSize: 16,
-              backgroundColor: 'darkorchid'
+              backgroundColor: '#ff1c99'
             },
            
            ]}
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
    text: {
     textAlign: 'center',
     margin: 12,
-    color: 'darkorchid',
+    color: '#ff1c99',
     fontSize: 36
   },
    buttonText:{
