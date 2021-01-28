@@ -150,7 +150,8 @@ class Inputs extends Component {
               borderRadius: 13,
               borderColor: "black",
               fontSize: 16,
-              backgroundColor: 'darkorchid'
+              backgroundColor: '#ff1c99',
+              
             },
            
            ]}
@@ -167,7 +168,7 @@ export default Inputs
 
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 120,
+      paddingTop: 70,
       
    },
    input: {
@@ -181,18 +182,22 @@ const styles = StyleSheet.create({
    text: {
       textAlign: 'center',
       margin: 12,
-      color: 'darkorchid',
+      fontWeight: "bold",
+      color: '#ff1c99',
       fontSize: 36
   },
    buttonText:{
       color: 'white',
       textAlign: 'center',
-      fontSize: 30
+      fontSize: 30,
+      fontWeight: "bold",
+
    },
     sideButtons: {
       flexDirection: 'row',
       paddingLeft: 30,
-      width: "90%",    
+      width: "90%",
+    
       justifyContent: 'space-between',
     },
 
