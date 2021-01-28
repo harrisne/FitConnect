@@ -116,16 +116,9 @@ class Inputs extends Component {
             <TouchableOpacity style={styles.activityContainer}>
               <Text style={styles.activityButtonText}>Flexibility</Text>
             </TouchableOpacity>
-
-
-        {/* add fitness stuff and make scroll vertical with create button */}
-
             
           </ScrollView>
          
-
-
-
 
           <TextInput style = {styles.input}
 
@@ -157,22 +150,15 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
 
-          <Pressable style={({pressed}) => [
-            {
-              margin: 16,
-              height: 44,
-              borderWidth: 0.7,
-              borderRadius: 13,
-              borderColor: "black",
-              fontSize: 16,
-              backgroundColor: '#ff1c99',
-              
-            },
-           
-           ]}
-           onPress={() => Alert.alert('Button Pressed!')}>
-              <Text style={styles.buttonText}>CREATE</Text>
-          </Pressable>
+         
+
+
+
+
+          <TouchableOpacity style = {styles.createContainer}
+            onPress = {() => Alert.alert(this.state.fullName)}>
+            <Text style = {styles.createButtonText}> Submit </Text>
+          </TouchableOpacity>
 
          </ScrollView>
       )
@@ -249,7 +235,29 @@ const styles = StyleSheet.create({
       color: "black",
       fontWeight: "bold",
       alignSelf: "center",
+    },
+    createContainer: {
+      backgroundColor: '#ff1c99',
+      borderRadius: 13,
+      borderWidth: 0.7,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 380,
+      height: 60,
+      marginLeft: 18,
+      marginTop: 7,
+      marginBottom: 0,
+      flexDirection: 'row',
+      borderColor: "black"
+
+    },
+    createButtonText: {
+      fontSize: 30,
+      color: "white",
+      fontWeight: "bold",
+      alignSelf: "center",
     }
 
   
 })
+
