@@ -132,12 +132,14 @@ const styles = StyleSheet.create({
    text: {
     textAlign: 'center',
     margin: 12,
+    fontWeight: "bold",
     color: '#ff1c99',
     fontSize: 36
   },
    buttonText:{
     color: 'white',
     textAlign: 'center',
+    fontWeight: "bold",
     fontSize: 30
 
    }
