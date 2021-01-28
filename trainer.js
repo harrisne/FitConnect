@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
+import { View, Text, Button, TextInput, StyleSheet, Pressable, Alert, TouchableOpacity, ScrollView } from 'react-native'
 
 class Inputs extends Component {
    state = {
@@ -41,7 +41,8 @@ class Inputs extends Component {
    render() {
       return (
 
-          <View style = {styles.container}>  
+          <ScrollView vertical = {true}
+            style = {styles.container}>  
             
             <View>
               <Text style = {styles.text}> Create Trainer Account </Text>
@@ -69,45 +70,59 @@ class Inputs extends Component {
               onChangeText = {this.password}/>  
 
           
-          <View style={styles.sideButtons}>
-          <Button
-            title="M"
-            color="black"
-            onPress={() => Alert.alert('Left button pressed')}
-          />
-          <Button
-            title="T"
-            color="black"
-            onPress={() => Alert.alert('Right button pressed')}
-          />
-           <Button
-            title="W"
-            color="black"
-            onPress={() => Alert.alert('Left button pressed')}
-          />
-          <Button
-            title="Th"
-            color="black"
-            onPress={() => Alert.alert('Right button pressed')}
-          />
-           <Button
-            title="F"
-            color="black"
+          <ScrollView horizontal = {true} scrollEnabled = {false}>
+          
+            <TouchableOpacity style={styles.calendarButtonContainer}>
+              <Text style={styles.calendarButtonText}>M</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.calendarButtonContainer}>
+              <Text style={styles.calendarButtonText}>T</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.calendarButtonContainer}>
+              <Text style={styles.calendarButtonText}>W</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.calendarButtonContainer}>
+              <Text style={styles.calendarButtonText}>TH</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.calendarButtonContainer}>
+              <Text style={styles.calendarButtonText}>F</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.calendarButtonContainer}>
+              <Text style={styles.calendarButtonText}>S</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.calendarButtonContainer}>
+              <Text style={styles.calendarButtonText}>Su</Text>
+            </TouchableOpacity>
+
             
-            onPress={() => Alert.alert('Left button pressed')}
-          />
-          <Button
-            title="S"
-            color="black"
-            onPress={() => Alert.alert('Right button pressed')
-          }
-          />
-           <Button
-            title="Su"
-            color="black"
-            onPress={() => color = 'red'}
-          />
-        </View>
+          </ScrollView>
+         
+          <ScrollView horizontal = {true} scrollEnabled = {false}>
+          
+            <TouchableOpacity style={styles.activityContainer}>
+              <Text style={styles.activityButtonText}>Strength</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.activityContainer}>
+              <Text style={styles.activityButtonText}>Aerobic</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.activityContainer}>
+              <Text style={styles.activityButtonText}>Flexibility</Text>
+            </TouchableOpacity>
+
+
+        {/* add fitness stuff and make scroll vertical with create button */}
+
+            
+          </ScrollView>
+         
 
 
 
@@ -159,7 +174,7 @@ class Inputs extends Component {
               <Text style={styles.buttonText}>CREATE</Text>
           </Pressable>
 
-         </View>
+         </ScrollView>
       )
    }
 }
@@ -197,9 +212,44 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       paddingLeft: 30,
       width: "90%",
-    
       justifyContent: 'space-between',
     },
+    calendarButtonContainer: {
+      backgroundColor: '#ff1c99',
+      borderRadius: 14,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 40,
+      height: 40,
+      marginLeft: 16,
+      marginBottom: 15,
+      flexDirection: 'row',
+
+    },
+    calendarButtonText: {
+      fontSize: 22,
+      color: "black",
+      fontWeight: "bold",
+      alignSelf: "center",
+    },
+    activityContainer: {
+      backgroundColor: '#ff1c99',
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 100,
+      height: 40,
+      marginLeft: 26,
+      marginBottom: 0,
+      flexDirection: 'row',
+
+    },
+    activityButtonText: {
+      fontSize: 20,
+      color: "black",
+      fontWeight: "bold",
+      alignSelf: "center",
+    }
 
   
 })
