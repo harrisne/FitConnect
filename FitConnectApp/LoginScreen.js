@@ -1,15 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput, TabBarIOSItem } from 'react-native';
 
 function LoginScreen(props) {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // CHECKS FOR EMPTY TEXT INPUT
+  const checkTextInput = () => {
+    if (!email.trim()) {
+      alert("Please enter a valid email address");
+      console.log("no");
+      return;
+    }
+    if (!password.trim()) {
+      alert("Please enter a valid password");
+      return;
+    }
+    //console.log({email}, {password});
+  }
+
   return (
     <SafeAreaView>
       <StatusBar style="auto" />
       <Text style={styles.titleText}>Log In</Text>
-      <TextInput placeholder="Email Address" style={styles.textBox} />
-      <TextInput placeholder="Password" style={styles.textBox} />
-      <LoginButton title="LoginButton" size="sm"></LoginButton>
+      <TextInput placeholder="Email Address" style={styles.textBox} onChangeText={(value) => setEmail(value)}/>
+      <TextInput placeholder="Password" secureTextEntry={true} style={styles.textBox} onChangeText={(value) => setPassword(value)}/>
+      <LoginButton title="LoginButton" size="sm" onPress={checkTextInput}></LoginButton>
       {/* <ForgotPasswordButton title="ForgotPassword"></ForgotPasswordButton> */}
       <Text style={styles.forgotPasswordText}>Forgot password?</Text>
     </SafeAreaView>
@@ -44,6 +62,8 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 12,
     marginTop: 8,
+    marginLeft: 20,
+    marginRight: 20,
   },
   loginButtonText: {
     fontSize: 18,
