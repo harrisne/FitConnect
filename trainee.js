@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
+import { View, Text, TextInput, StyleSheet, ScrollView, Pressable, Alert } from 'react-native'
 
 class Inputs extends Component {
    state = {
@@ -37,7 +37,7 @@ class Inputs extends Component {
    render() {
       return (
 
-          <View style = {styles.container}>  
+          <ScrollView style = {styles.container}>  
             
             <View>
               <Text style = {styles.text}> Create Trainee Account </Text>
@@ -109,7 +109,7 @@ class Inputs extends Component {
               <Text style={styles.buttonText}>CREATE</Text>
           </Pressable>
 
-         </View>
+         </ScrollView>
       )
    }
 }
