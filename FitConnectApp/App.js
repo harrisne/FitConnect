@@ -1,29 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-import 'react-native-gesture-handler';
-import React from 'react';
+import * as React from 'react';
+import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import LoginScreen from './src/scenes/login';
-import HomeScreen from './src/scenes/home';
+import AppNavigator from "./src/navigation/AppNavigator";
 
-const RootStack = createStackNavigator();
- 
-const App = () => {
+const Stack = createStackNavigator();
+
+function App() {
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName='Landing'>
-        <RootStack.Screen name='Landing' component={LoginScreen} />
-        <RootStack.Screen name='Home' component={HomeScreen} />
-      </RootStack.Navigator>
+      <AppNavigator />
     </NavigationContainer>
   );
-};
- 
+}
+
 export default App;
+
