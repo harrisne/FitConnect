@@ -33,9 +33,27 @@ class Inputs extends Component {
     this.setState({ weight: text })
    }
 
-   changeColor(){
-    this.setState({ color: "red"})
+   
+
+
+
+
+tryThis() { 
+   if(this.state.fullName.length == 0){
+     Alert.alert("Please fill out name")
    }
+   else{
+     this.tryThis2()
+   }
+ }
+ tryThis2() { 
+  if(this.state.sex.length == 0){
+    Alert.alert("Please fill out sex")
+  }
+}
+
+   
+ 
  
   
    render() {
@@ -150,14 +168,11 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
 
-         
-
-
-
 
           <TouchableOpacity style = {styles.createContainer}
-            onPress = {() => Alert.alert(this.state.fullName)}>
-            <Text style = {styles.createButtonText}> Submit </Text>
+            onPress = {() => {this.tryThis()}}>
+
+            <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
 
          </ScrollView>
