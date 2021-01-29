@@ -15,7 +15,7 @@ function WelcomeScreen({navigation}) {
             size="sm"
             onPress={() => navigation.navigate('TraineeRegister')}>
         </LoginButton>
-        &nbsp;&nbsp;&nbsp;
+        {/* &nbsp;&nbsp;&nbsp; */}
         <SignUpButton
             title="Trainer"
             size="sm"
