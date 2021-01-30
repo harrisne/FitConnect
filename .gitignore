@@ -1,5 +1,8 @@
 node_modules/**/*
+node_modules/
 .expo/*
+.expo/
+.expo-shared
 npm-debug.*
 *.jks
 *.p8
@@ -11,3 +14,4 @@ web-build/
 config.js
 # macOS
 .DS_Store
+.vscode
