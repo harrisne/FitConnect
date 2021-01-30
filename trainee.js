@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet, ScrollView, Pressable, Alert } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
 
 class Inputs extends Component {
    state = {
@@ -33,11 +33,13 @@ class Inputs extends Component {
     this.setState({ weight: text })
    }
   
-  
+  tryThis(){
+    Alert.alert("hello")
+  }
    render() {
       return (
 
-          <ScrollView style = {styles.container}>  
+          <View style = {styles.container}>  
             
             <View>
               <Text style = {styles.text}> Create Trainee Account </Text>
@@ -93,23 +95,14 @@ class Inputs extends Component {
               autoCapitalize = "none"
               onChangeText = {this.weight}/>  
 
-          <Pressable style={({pressed}) => [
-            {
-              margin: 16,
-              height: 44,
-              borderWidth: 0.7,
-              borderRadius: 13,
-              borderColor: "black",
-              fontSize: 16,
-              backgroundColor: '#ff1c99'
-            },
-           
-           ]}
-           onPress={() => Alert.alert('Button Pressed!')}>
-              <Text style={styles.buttonText}>CREATE</Text>
-          </Pressable>
+          <TouchableOpacity style = {styles.createContainer}  
+            onPress = {() => {this.tryThis()}}>
 
-         </ScrollView>
+            <Text style = {styles.createButtonText}> Create </Text>
+          </TouchableOpacity>
+         
+
+         </View>
       )
    }
 }
@@ -142,7 +135,28 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 30
 
-   }
+   },
+   createContainer: {
+    backgroundColor: '#ff1c99',
+    borderRadius: 13,
+    borderWidth: 0.7,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 380,
+    height: 60,
+    marginLeft: 18,
+    marginTop: 7,
+    marginBottom: 0,
+    flexDirection: 'row',
+    borderColor: "black"
+
+  },
+  createButtonText: {
+    fontSize: 30,
+    color: "white",
+    fontWeight: "bold",
+    alignSelf: "center",
+  }
 
   
 })
