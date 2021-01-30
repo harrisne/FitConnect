@@ -13,7 +13,7 @@ function HomeScreen(props) {
         <PageButton title="recommendedTrainers" page="Recommended Trainers"></PageButton>
         <PageButton title="settings" page="Settings"></PageButton>
       </ScrollView>
-      <Image source={require("../../assets/profilePic.jpg")} style={styles.profilePic} />
+      <Image source={require("../assets/profilePic.jpg")} style={styles.profilePic} />
       <Text style={styles.nameText}>Jessica Smith</Text>
       <Text style={styles.sectionTitleText}>Quick Calendar</Text>
       <ScrollView horizontal={true}>
@@ -37,9 +37,9 @@ function HomeScreen(props) {
         <UpcomingAppointmentButton title="appt5" name="Elwood Norton" attr1="Strength" attr2="Aerobic" startTime="4:00 PM" endTime="5:00 PM"></UpcomingAppointmentButton>
       </ScrollView>
       <SafeAreaView style={{flexDirection:"row"}}>
-        <IconButton title="homeIcon" iconSource={require("../../assets/home.png")}></IconButton>
-        <IconButton title="searchIcon" iconSource={require("../../assets/search.png")}></IconButton>
-        <IconButton title="profileIcon" iconSource={require("../../assets/profile.png")}></IconButton>
+        <IconButton title="homeIcon" iconSource={require("../assets/home.png")}></IconButton>
+        <IconButton title="searchIcon" iconSource={require("../assets/search.png")}></IconButton>
+        <IconButton title="profileIcon" iconSource={require("../assets/profile.png")}></IconButton>
       </SafeAreaView>
     </SafeAreaView>
   );

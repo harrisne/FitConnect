@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
-import firebase from '../firebase/config'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
+import firebase from '../../config/firebase/config'
 
 class Inputs extends Component {
    state = {
@@ -33,8 +33,8 @@ class Inputs extends Component {
    weight = (text)=> {
     this.setState({ weight: text })
    }
-
-   handleSignUp() {
+  
+  tryThis(){
       const { emailAddress, password } = this.state
       firebase
          .auth()
@@ -43,8 +43,7 @@ class Inputs extends Component {
             this.props.navigation.navigate('HomeScreen')
          })
          .catch(error => console.log(error))
-   }
-
+  }
    render() {
       return (
 
@@ -104,28 +103,18 @@ class Inputs extends Component {
               autoCapitalize = "none"
               onChangeText = {this.weight}/>  
 
-          <Pressable style={({pressed}) => [
-            {
-              margin: 16,
-              height: 44,
-              borderWidth: 0.7,
-              borderRadius: 13,
-              borderColor: "black",
-              fontSize: 16,
-              backgroundColor: '#ff1c99'
-            },
-           
-           ]}
-           onPress={() => {this.handleSignUp()}}>
-              <Text style={styles.buttonText}>CREATE</Text>
-          </Pressable>
+          <TouchableOpacity style = {styles.createContainer}  
+            onPress = {() => {this.handleSignUp()}}>
+            <Text style = {styles.createButtonText}> Create </Text>
+          </TouchableOpacity>
+         
 
          </View>
       )
    }
 }
 
-export default Inputs;
+export default Inputs
 
 const styles = StyleSheet.create({
    container: {
@@ -143,15 +132,38 @@ const styles = StyleSheet.create({
    text: {
     textAlign: 'center',
     margin: 12,
+    fontWeight: "bold",
     color: '#ff1c99',
     fontSize: 36
   },
    buttonText:{
     color: 'white',
     textAlign: 'center',
+    fontWeight: "bold",
     fontSize: 30
 
-   }
+   },
+   createContainer: {
+    backgroundColor: '#ff1c99',
+    borderRadius: 13,
+    borderWidth: 0.7,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 380,
+    height: 60,
+    marginLeft: 18,
+    marginTop: 7,
+    marginBottom: 0,
+    flexDirection: 'row',
+    borderColor: "black"
+
+  },
+  createButtonText: {
+    fontSize: 30,
+    color: "white",
+    fontWeight: "bold",
+    alignSelf: "center",
+  }
 
   
 })
