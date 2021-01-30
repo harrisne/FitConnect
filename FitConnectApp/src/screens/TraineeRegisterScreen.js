@@ -34,7 +34,7 @@ class Inputs extends Component {
     this.setState({ weight: text })
    }
 
-   handleSignUp = () => {
+   handleSignUp() {
       const { emailAddress, password } = this.state
       firebase
          .auth()
@@ -116,7 +116,7 @@ class Inputs extends Component {
             },
            
            ]}
-           onPress={this.handleSignUp}>
+           onPress={() => {this.handleSignUp()}}>
               <Text style={styles.buttonText}>CREATE</Text>
           </Pressable>
 
