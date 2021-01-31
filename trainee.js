@@ -6,6 +6,7 @@ class Inputs extends Component {
       fullName: '',
       emailAddress: '',
       password: '',
+      passwordmatch: '',
       sex: '',
       age: '',
       height: '',
@@ -19,6 +20,9 @@ class Inputs extends Component {
    }
    password = (text)=> {
     this.setState({ password: text })
+   }
+   passwordmatch = (text)=> {
+    this.setState({ passwordmatch: text })
    }
    sex = (text)=> {
     this.setState({ sex: text })
@@ -36,6 +40,7 @@ class Inputs extends Component {
 textboxErrors() {
 
       errors = []
+      passwords = []
       if(this.state.fullName.length == 0){
         errors.push("full name")
       }
@@ -44,6 +49,9 @@ textboxErrors() {
       }
       if(this.state.password.length == 0){
         errors.push("password")
+      }
+      if(this.state.passwordmatch.length == 0){
+        errors.push("password confirmation")
       }
       if(this.state.sex.length == 0){
         errors.push("sex")
@@ -58,8 +66,15 @@ textboxErrors() {
         errors.push("weight")
       }
       if(errors.length == 0){
-        if(this.state.password.length < 5){
-          Alert.alert("Please make password at least 5 characters")
+        if(this.state.password.length < 5 || (this.state.password != this.state.passwordmatch)){
+          if(this.state.password.length < 5){
+            passwords.push("at least 5 characters")
+          }
+          else{
+            passwords.push("match")
+          }
+          Alert.alert("Please make password " + passwords[0])
+          passwords.pop() 
         }
         else{
           Alert.alert("Account created")
@@ -99,7 +114,14 @@ textboxErrors() {
               placeholder = "Password"
               placeholderTextColor = "#a9a9a9"
               autoCapitalize = "none"
-              onChangeText = {this.password}/>  
+              onChangeText = {this.password}/> 
+
+          <TextInput secureTextEntry={true} style = {styles.input}
+
+              placeholder = "Confirm Password"
+              placeholderTextColor = "#a9a9a9"
+              autoCapitalize = "none"
+              onChangeText = {this.passwordmatch}/>  
                
           <TextInput style = {styles.input}
 
