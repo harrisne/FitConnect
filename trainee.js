@@ -58,7 +58,12 @@ textboxErrors() {
         errors.push("weight")
       }
       if(errors.length == 0){
-        Alert.alert("Account created")
+        if(this.state.password.length < 5){
+          Alert.alert("Please make password at least 5 characters")
+        }
+        else{
+          Alert.alert("Account created")
+        }
       }
       else{
         Alert.alert("Please fill out your " + errors[0])
