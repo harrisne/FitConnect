@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Alert } from 'react-native'
 
 class Inputs extends Component {
    state = {
@@ -89,7 +89,8 @@ textboxErrors() {
    render() {
       return (
 
-          <View style = {styles.container}>  
+          <ScrollView contentInset={{bottom: 100}}
+            style = {styles.container}>  
             
             <View>
               <Text style = {styles.text}> Create Trainee Account </Text>
@@ -159,7 +160,7 @@ textboxErrors() {
           </TouchableOpacity>
          
 
-         </View>
+         </ScrollView>
       )
    }
 }
@@ -168,7 +169,7 @@ export default Inputs
 
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 120,
+      paddingTop: 100,
       
    },
    input: {
