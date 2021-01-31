@@ -38,22 +38,45 @@ class Inputs extends Component {
 
 
 
-tryThis() { 
-   if(this.state.fullName.length == 0){
-     Alert.alert("Please fill out name")
-   }
-   else{
-     this.tryThis2()
-   }
- }
- tryThis2() { 
-  if(this.state.sex.length == 0){
-    Alert.alert("Please fill out sex")
-  }
+problemFullName() {
+
+      errors = []
+      if(this.state.fullName.length == 0){
+        errors.push("full name")
+      }
+      if(this.state.emailAddress.length == 0){
+        errors.push("email address")
+      }
+      if(this.state.password.length == 0){
+        errors.push("password")
+      }
+      if(this.state.sex.length == 0){
+        errors.push("sex")
+      }
+      if(this.state.age.length == 0){
+        errors.push("age")
+      }
+      if(this.state.height.length == 0){
+        errors.push("height")
+      }
+      if(this.state.weight.length == 0){
+        errors.push("weight")
+      }
+      if(errors.length == 0){
+        Alert.alert("Account created")
+      }
+      else{
+        Alert.alert("Please fill out your " + errors[0])
+        errors.pop()
+      }
+  
 }
 
-   
- 
+
+
+
+
+
  
   
    render() {
@@ -151,7 +174,7 @@ tryThis() {
               placeholder = "Age (e.g. 20)"
               placeholderTextColor = "#a9a9a9"
               autoCapitalize = "none"
-              onChangeText = {this.Age}/>  
+              onChangeText = {this.age}/>  
           
           <TextInput style = {styles.input}
 
@@ -170,7 +193,7 @@ tryThis() {
 
 
           <TouchableOpacity style = {styles.createContainer}
-            onPress = {() => {this.tryThis()}}>
+            onPress = {() => {this.problemFullName()}}>
 
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
