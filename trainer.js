@@ -6,6 +6,7 @@ class Inputs extends Component {
       fullName: '',
       emailAddress: '',
       password: '',
+      passwordmatch: '',
       sex: '',
       age: '',
       height: '',
@@ -19,6 +20,9 @@ class Inputs extends Component {
    }
    password = (text)=> {
     this.setState({ password: text })
+   }
+   passwordmatch = (text)=> {
+    this.setState({ passwordmatch: text })
    }
    sex = (text)=> {
     this.setState({ sex: text })
@@ -34,60 +38,60 @@ class Inputs extends Component {
    }
 
    
+   textboxErrors() {
 
-
-
-
-textboxErrors() {
-
-      errors = []
-      if(this.state.fullName.length == 0){
-        errors.push("full name")
-      }
-      if(this.state.emailAddress.length == 0){
-        errors.push("email address")
-      }
-      if(this.state.password.length == 0){
-        errors.push("password")
-      }
-      if(this.state.sex.length == 0){
-        errors.push("sex")
-      }
-      if(this.state.age.length == 0){
-        errors.push("age")
-      }
-      if(this.state.height.length == 0){
-        errors.push("height")
-      }
-      if(this.state.weight.length == 0){
-        errors.push("weight")
-      }
-      if(errors.length == 0){
+    errors = []
+    passwords = []
+    if(this.state.fullName.length == 0){
+      errors.push("full name")
+    }
+    if(this.state.emailAddress.length == 0){
+      errors.push("email address")
+    }
+    if(this.state.password.length == 0){
+      errors.push("password")
+    }
+    if(this.state.passwordmatch.length == 0){
+      errors.push("password confirmation")
+    }
+    if(this.state.sex.length == 0){
+      errors.push("sex")
+    }
+    if(this.state.age.length == 0){
+      errors.push("age")
+    }
+    if(this.state.height.length == 0){
+      errors.push("height")
+    }
+    if(this.state.weight.length == 0){
+      errors.push("weight")
+    }
+    if(errors.length == 0){
+      if(this.state.password.length < 5 || (this.state.password != this.state.passwordmatch)){
         if(this.state.password.length < 5){
-          Alert.alert("Please make password at least 5 characters")
+          passwords.push("at least 5 characters")
         }
         else{
-          Alert.alert("Account created")
+          passwords.push("match")
         }
+        Alert.alert("Please make password " + passwords[0])
+        passwords.pop() 
       }
       else{
-        Alert.alert("Please fill out your " + errors[0])
-        errors.pop()
+        Alert.alert("Account created")
       }
-  
+    }
+    else{
+      Alert.alert("Please fill out your " + errors[0])
+      errors.pop()
+    }
+
 }
-
-
-
-
-
-
- 
   
    render() {
       return (
 
-          <ScrollView vertical = {true}
+          <ScrollView contentInset={{bottom: 100}}
             style = {styles.container}>  
             
             <View>
@@ -114,6 +118,13 @@ textboxErrors() {
               placeholderTextColor = "#a9a9a9"
               autoCapitalize = "none"
               onChangeText = {this.password}/>  
+          
+          <TextInput secureTextEntry={true} style = {styles.input}
+
+              placeholder = "Confirm Password"
+              placeholderTextColor = "#a9a9a9"
+              autoCapitalize = "none"
+              onChangeText = {this.passwordmatch}/>  
 
           
           <ScrollView horizontal = {true} scrollEnabled = {false}>
