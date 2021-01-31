@@ -33,9 +33,39 @@ class Inputs extends Component {
     this.setState({ weight: text })
    }
   
-  tryThis(){
-    Alert.alert("hello")
-  }
+textboxErrors() {
+
+      errors = []
+      if(this.state.fullName.length == 0){
+        errors.push("full name")
+      }
+      if(this.state.emailAddress.length == 0){
+        errors.push("email address")
+      }
+      if(this.state.password.length == 0){
+        errors.push("password")
+      }
+      if(this.state.sex.length == 0){
+        errors.push("sex")
+      }
+      if(this.state.age.length == 0){
+        errors.push("age")
+      }
+      if(this.state.height.length == 0){
+        errors.push("height")
+      }
+      if(this.state.weight.length == 0){
+        errors.push("weight")
+      }
+      if(errors.length == 0){
+        Alert.alert("Account created")
+      }
+      else{
+        Alert.alert("Please fill out your " + errors[0])
+        errors.pop()
+      }
+  
+}
    render() {
       return (
 
@@ -79,7 +109,7 @@ class Inputs extends Component {
               placeholder = "Age (e.g. 20)"
               placeholderTextColor = "#a9a9a9"
               autoCapitalize = "none"
-              onChangeText = {this.Age}/>  
+              onChangeText = {this.age}/>  
           
           <TextInput style = {styles.input}
 
@@ -96,7 +126,7 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
           <TouchableOpacity style = {styles.createContainer}  
-            onPress = {() => {this.tryThis()}}>
+            onPress = {() => {this.textboxErrors()}}>
 
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>

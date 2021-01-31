@@ -38,7 +38,7 @@ class Inputs extends Component {
 
 
 
-problemFullName() {
+textboxErrors() {
 
       errors = []
       if(this.state.fullName.length == 0){
@@ -193,7 +193,7 @@ problemFullName() {
 
 
           <TouchableOpacity style = {styles.createContainer}
-            onPress = {() => {this.problemFullName()}}>
+            onPress = {() => {this.textboxErrors()}}>
 
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
