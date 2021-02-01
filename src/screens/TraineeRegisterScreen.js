@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
-import firebase from '../../config/firebase/config'
+import firebase from 'firebase';
 
 class Inputs extends Component {
-   state = {
+/*    state = {
       fullName: '',
       emailAddress: '',
       password: '',
@@ -11,7 +11,22 @@ class Inputs extends Component {
       age: '',
       height: '',
       weight: ''
+   } */
+
+   constructor(props) {
+      super(props)
+
+      this.state = ({
+         fullName: '',
+         emailAddress: '',
+         password: '',
+         sex: '',
+         age: '',
+         height: '',
+         weight: ''
+      })
    }
+
    fullName = (text)=> {
     this.setState({ fullName: text })
    }
@@ -34,7 +49,7 @@ class Inputs extends Component {
     this.setState({ weight: text })
    }
   
-  handleSignUp(){
+/*   handleSignUp() {
       const { emailAddress, password } = this.state
       firebase
          .auth()
@@ -43,7 +58,21 @@ class Inputs extends Component {
             this.props.navigation.navigate('HomeScreen')
          })
          .catch(error => console.log(error))
-  }
+  } */
+
+   handleSignUp = (emailAddress, password) => {
+      try {
+         if(this.state.password < 6) {
+            alert('Please enter at least 6 characters')
+            return;
+         }
+         firebase.auth().createUserWithEmailAndPassword(emailAddress, password)
+      }
+      catch(error) {
+         console.log(error.toString())
+      }
+   }
+
    render() {
       return (
 
@@ -104,7 +133,7 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
           <TouchableOpacity style = {styles.createContainer}  
-            onPress = {() => {this.handleSignUp()}}>
+            onPress = {() => this.handleSignUp(this.state.emailAddress, this.state.password)}>
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
          

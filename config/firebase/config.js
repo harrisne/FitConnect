@@ -1,14 +1,16 @@
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 //var firebase = require("firebase/app");
-import firebase from 'firebase';
+/* import firebase from 'firebase/app';
+import 'firebase/auth'; */
+//import * as firebase from 'firebase';
 
 // Add the Firebase products that you want to use
-require("firebase/auth");
-require("firebase/firestore")
-require("firebase/database")
+//require("firebase/auth");
+//require("firebase/firestore")
+//require("firebase/database")
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyC2W4ynBW_JTBMdfXNjzZVuHRuBOuTFlgw",
     authDomain: "fitconnect-ba3bb.firebaseapp.com",
     databaseURL: "https://fitconnect-ba3bb-default-rtdb.firebaseio.com",
@@ -19,9 +21,9 @@ const firebaseConfig = {
     measurementId: "G-8R4BXHDZVM"
 };
 
-firebase.initializeApp(firebaseConfig);
-var db = firebase.database();
+
+/* var db = firebase.database();
 var firestore = firebase.firestore();
 var auth = firebase.auth();
 
-module.exports = {firebase, db, firestore, auth};
+module.exports = {firebase, db, firestore, auth}; */
