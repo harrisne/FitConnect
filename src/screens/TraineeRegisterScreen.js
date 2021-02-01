@@ -34,7 +34,7 @@ class Inputs extends Component {
     this.setState({ weight: text })
    }
   
-  tryThis(){
+  handleSignUp(){
       const { emailAddress, password } = this.state
       firebase
          .auth()
