@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { View, Text, Button, TextInput, StyleSheet, Pressable, Alert, TouchableOpacity, ScrollView } from 'react-native'
-import {}
+
 class Inputs extends Component {
    state = {
       fullName: '',
       emailAddress: '',
       password: '',
+      passwordmatch: '',
       sex: '',
       age: '',
       height: '',
@@ -20,6 +21,9 @@ class Inputs extends Component {
    password = (text)=> {
     this.setState({ password: text })
    }
+   passwordmatch = (text)=> {
+    this.setState({ passwordmatch: text })
+   }
    sex = (text)=> {
     this.setState({ sex: text })
    }
@@ -33,15 +37,61 @@ class Inputs extends Component {
     this.setState({ weight: text })
    }
 
-   changeColor(){
-    this.setState({ color: "red"})
-   }
- 
+   
+   textboxErrors() {
+
+    errors = []
+    passwords = []
+    if(this.state.fullName.length == 0){
+      errors.push("full name")
+    }
+    if(this.state.emailAddress.length == 0){
+      errors.push("email address")
+    }
+    if(this.state.password.length == 0){
+      errors.push("password")
+    }
+    if(this.state.passwordmatch.length == 0){
+      errors.push("password confirmation")
+    }
+    if(this.state.sex.length == 0){
+      errors.push("sex")
+    }
+    if(this.state.age.length == 0){
+      errors.push("age")
+    }
+    if(this.state.height.length == 0){
+      errors.push("height")
+    }
+    if(this.state.weight.length == 0){
+      errors.push("weight")
+    }
+    if(errors.length == 0){
+      if(this.state.password.length < 5 || (this.state.password != this.state.passwordmatch)){
+        if(this.state.password.length < 5){
+          passwords.push("at least 5 characters")
+        }
+        else{
+          passwords.push("match")
+        }
+        Alert.alert("Please make password " + passwords[0])
+        passwords.pop() 
+      }
+      else{
+        Alert.alert("Account created")
+      }
+    }
+    else{
+      Alert.alert("Please fill out your " + errors[0])
+      errors.pop()
+    }
+
+}
   
    render() {
       return (
 
-          <ScrollView vertical = {true}
+          <ScrollView contentInset={{bottom: 100}}
             style = {styles.container}>  
             
             <View>
@@ -68,6 +118,13 @@ class Inputs extends Component {
               placeholderTextColor = "#a9a9a9"
               autoCapitalize = "none"
               onChangeText = {this.password}/>  
+          
+          <TextInput secureTextEntry={true} style = {styles.input}
+
+              placeholder = "Confirm Password"
+              placeholderTextColor = "#a9a9a9"
+              autoCapitalize = "none"
+              onChangeText = {this.passwordmatch}/>  
 
           
           <ScrollView horizontal = {true} scrollEnabled = {false}>
@@ -133,7 +190,7 @@ class Inputs extends Component {
               placeholder = "Age (e.g. 20)"
               placeholderTextColor = "#a9a9a9"
               autoCapitalize = "none"
-              onChangeText = {this.Age}/>  
+              onChangeText = {this.age}/>  
           
           <TextInput style = {styles.input}
 
@@ -150,14 +207,11 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
 
-         
-
-
-
 
           <TouchableOpacity style = {styles.createContainer}
-            onPress = {() => Alert.alert(this.state.fullName)}>
-            <Text style = {styles.createButtonText}> Submit </Text>
+            onPress = {() => {this.textboxErrors()}}>
+
+            <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
 
          </ScrollView>
@@ -165,7 +219,7 @@ class Inputs extends Component {
    }
 }
 
-export default Inputs;
+export default Inputs
 
 const styles = StyleSheet.create({
    container: {
@@ -260,4 +314,3 @@ const styles = StyleSheet.create({
 
   
 })
-
