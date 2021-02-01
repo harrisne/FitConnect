@@ -40,3 +40,5 @@ function insertIntoTrainerDatabase(fullName, email, password, sex, age, height, 
                 weight: weight
         });
     }
+
+    module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase};

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Button, TextInput, StyleSheet, Pressable, Alert, TouchableOpacity, ScrollView } from 'react-native'
-
+import {}
 class Inputs extends Component {
    state = {
       fullName: '',
