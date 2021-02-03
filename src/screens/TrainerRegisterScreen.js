@@ -208,6 +208,8 @@ class Inputs extends Component {
 
 
 
+        
+
           <TouchableOpacity style = {styles.createContainer}
             onPress = {() => {this.textboxErrors()}}>
 
