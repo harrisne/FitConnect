@@ -150,11 +150,7 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
 
-         
-
-
-
-
+        
           <TouchableOpacity style = {styles.createContainer}
             onPress = {() => Alert.alert(this.state.fullName)}>
             <Text style = {styles.createButtonText}> Submit </Text>

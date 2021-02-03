@@ -1,32 +1,17 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
-import firebase from 'firebase';
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Alert } from 'react-native'
 
 class Inputs extends Component {
-/*    state = {
+   state = {
       fullName: '',
       emailAddress: '',
       password: '',
+      passwordmatch: '',
       sex: '',
       age: '',
       height: '',
       weight: ''
-   } */
-
-   constructor(props) {
-      super(props)
-
-      this.state = ({
-         fullName: '',
-         emailAddress: '',
-         password: '',
-         sex: '',
-         age: '',
-         height: '',
-         weight: ''
-      })
    }
-
    fullName = (text)=> {
     this.setState({ fullName: text })
    }
@@ -35,6 +20,9 @@ class Inputs extends Component {
    }
    password = (text)=> {
     this.setState({ password: text })
+   }
+   passwordmatch = (text)=> {
+    this.setState({ passwordmatch: text })
    }
    sex = (text)=> {
     this.setState({ sex: text })
@@ -49,34 +37,60 @@ class Inputs extends Component {
     this.setState({ weight: text })
    }
   
-/*   handleSignUp() {
-      const { emailAddress, password } = this.state
-      firebase
-         .auth()
-         .createUserWithEmailAndPassword(emailAddress, password)
-         .then(() => {
-            this.props.navigation.navigate('HomeScreen')
-         })
-         .catch(error => console.log(error))
-  } */
+textboxErrors() {
 
-   handleSignUp = (emailAddress, password) => {
-      try {
-         if(this.state.password < 6) {
-            alert('Please enter at least 6 characters')
-            return;
-         }
-         firebase.auth().createUserWithEmailAndPassword(emailAddress, password)
+      errors = []
+      passwords = []
+      if(this.state.fullName.length == 0){
+        errors.push("full name")
       }
-      catch(error) {
-         console.log(error.toString())
+      if(this.state.emailAddress.length == 0){
+        errors.push("email address")
       }
-   }
-
+      if(this.state.password.length == 0){
+        errors.push("password")
+      }
+      if(this.state.passwordmatch.length == 0){
+        errors.push("password confirmation")
+      }
+      if(this.state.sex.length == 0){
+        errors.push("sex")
+      }
+      if(this.state.age.length == 0){
+        errors.push("age")
+      }
+      if(this.state.height.length == 0){
+        errors.push("height")
+      }
+      if(this.state.weight.length == 0){
+        errors.push("weight")
+      }
+      if(errors.length == 0){
+        if(this.state.password.length < 5 || (this.state.password != this.state.passwordmatch)){
+          if(this.state.password.length < 5){
+            passwords.push("at least 5 characters")
+          }
+          else{
+            passwords.push("match")
+          }
+          Alert.alert("Please make password " + passwords[0])
+          passwords.pop() 
+        }
+        else{
+          Alert.alert("Account created")
+        }
+      }
+      else{
+        Alert.alert("Please fill out your " + errors[0])
+        errors.pop()
+      }
+  
+}
    render() {
       return (
 
-          <View style = {styles.container}>  
+          <ScrollView contentInset={{bottom: 100}}
+            style = {styles.container}>  
             
             <View>
               <Text style = {styles.text}> Create Trainee Account </Text>
@@ -101,7 +115,14 @@ class Inputs extends Component {
               placeholder = "Password"
               placeholderTextColor = "#a9a9a9"
               autoCapitalize = "none"
-              onChangeText = {this.password}/>  
+              onChangeText = {this.password}/> 
+
+          <TextInput secureTextEntry={true} style = {styles.input}
+
+              placeholder = "Confirm Password"
+              placeholderTextColor = "#a9a9a9"
+              autoCapitalize = "none"
+              onChangeText = {this.passwordmatch}/>  
                
           <TextInput style = {styles.input}
 
@@ -116,7 +137,7 @@ class Inputs extends Component {
               placeholder = "Age (e.g. 20)"
               placeholderTextColor = "#a9a9a9"
               autoCapitalize = "none"
-              onChangeText = {this.Age}/>  
+              onChangeText = {this.age}/>  
           
           <TextInput style = {styles.input}
 
@@ -133,12 +154,13 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
           <TouchableOpacity style = {styles.createContainer}  
-            onPress = {() => this.handleSignUp(this.state.emailAddress, this.state.password)}>
+            onPress = {() => {this.textboxErrors()}}>
+
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
          
 
-         </View>
+         </ScrollView>
       )
    }
 }
@@ -147,7 +169,7 @@ export default Inputs
 
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 120,
+      paddingTop: 100,
       
    },
    input: {
