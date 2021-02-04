@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Button, TextInput, StyleSheet, Pressable, Alert, TouchableOpacity, ScrollView } from 'react-native'
+import {auth} from '../../config/firebase/config.js'
 
 class Inputs extends Component {
    state = {
@@ -38,54 +39,12 @@ class Inputs extends Component {
    }
 
    
-   textboxErrors() {
-
-    errors = []
-    passwords = []
-    if(this.state.fullName.length == 0){
-      errors.push("full name")
-    }
-    if(this.state.emailAddress.length == 0){
-      errors.push("email address")
-    }
-    if(this.state.password.length == 0){
-      errors.push("password")
-    }
-    if(this.state.passwordmatch.length == 0){
-      errors.push("password confirmation")
-    }
-    if(this.state.sex.length == 0){
-      errors.push("sex")
-    }
-    if(this.state.age.length == 0){
-      errors.push("age")
-    }
-    if(this.state.height.length == 0){
-      errors.push("height")
-    }
-    if(this.state.weight.length == 0){
-      errors.push("weight")
-    }
-    if(errors.length == 0){
-      if(this.state.password.length < 5 || (this.state.password != this.state.passwordmatch)){
-        if(this.state.password.length < 5){
-          passwords.push("at least 5 characters")
-        }
-        else{
-          passwords.push("match")
-        }
-        Alert.alert("Please make password " + passwords[0])
-        passwords.pop() 
-      }
-      else{
-        Alert.alert("Account created")
-      }
-    }
-    else{
-      Alert.alert("Please fill out your " + errors[0])
-      errors.pop()
-    }
-
+   handleSignUp(){
+    const { emailAddress, password } = this.state
+    auth.createUserWithEmailAndPassword(emailAddress, password).then(() => {
+          this.props.navigation.navigate('HomeScreen')
+       })
+       .catch(error => console.log(error))
 }
   
    render() {
@@ -206,13 +165,8 @@ class Inputs extends Component {
               autoCapitalize = "none"
               onChangeText = {this.weight}/>  
 
-
-
-        
-
-          <TouchableOpacity style = {styles.createContainer}
-            onPress = {() => {this.textboxErrors()}}>
-
+      <TouchableOpacity style = {styles.createContainer}  
+            onPress = {() => {this.handleSignUp()}}>
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
 
