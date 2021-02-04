@@ -1,8 +1,7 @@
-var {firebase, db, auth} = require("./config");
+var {firebase, db, auth, messages} = require("./config");
 
 
-var trainee = firebase.database().ref("trainee/");
-var trainer = firebase.database().ref("trainer/");
+var database = firebase.database()
 
 function isvalidEntry(username, password) {
 	var valid = true;
@@ -20,30 +19,26 @@ function deleteUser() {
 
 }
 
-function insertIntoTrainerDatabase(name, email, password, sex, age, height, weight) {
-    trainer.set({
-        fullName: {
-            email: this.email,
-            password: this.password,
-            sex: this.sex,
-            age: this.age,
-            height: this.height,
-            weight: this.weight
-        }
+function insertIntoTrainerDatabase(fullName, email, password, sex, age, height, weight) {
+    database.ref('trainer/' + fullName).set({
+            email: email,
+            password:password,
+            sex: sex,
+            age: age,
+            height: height,
+            weight: weight
     });
 }
 
     function insertIntoTraineeDatabase(fullName, email, password, sex, age, height, weight) {
-        trainee.set({
-            fullName: {
-                email: this.email,
-                password: this.password,
-                sex: this.sex,
-                age: this.age,
-                height: this.height,
-                weight: this.weight
-            }
+         database.ref('trainee/' + fullName).set({
+                email: email,
+                password: password,
+                sex: sex,
+                age: age,
+                height: height,
+                weight: weight
         });
     }
 
-//insertIntoTraineeDatabase("name", "email", "password"
+    module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase};
