@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
-import {firebase, auth} from '../../config/firebase/config.js'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Pressable, Alert } from 'react-native'
+import {auth} from '../../config/firebase/config.js'
 
 class Inputs extends Component {
    state = {
@@ -113,12 +113,10 @@ class Inputs extends Component {
               autoCapitalize = "none"
               onChangeText = {this.weight}/>  
 
-          <TouchableOpacity style = {styles.createContainer}  
-            onPress = {() => {this.textboxErrors()}}>
-
+         <TouchableOpacity style = {styles.createContainer}  
+            onPress = {() => {this.handleSignUp()}}>
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
-         
 
          </ScrollView>
       )
