@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
-import firebase from '../../config/firebase/config'
+import {firebase, auth} from '../../config/firebase/config.js'
 
 class Inputs extends Component {
    state = {
@@ -36,10 +36,7 @@ class Inputs extends Component {
   
   handleSignUp(){
       const { emailAddress, password } = this.state
-      firebase
-         .auth()
-         .createUserWithEmailAndPassword(emailAddress, password)
-         .then(() => {
+      auth.createUserWithEmailAndPassword(emailAddress, password).then(() => {
             this.props.navigation.navigate('HomeScreen')
          })
          .catch(error => console.log(error))
