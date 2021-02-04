@@ -6,9 +6,9 @@ import 'firebase/auth'; */
 //import * as firebase from 'firebase';
 
 // Add the Firebase products that you want to use
-//require("firebase/auth");
-//require("firebase/firestore")
-//require("firebase/database")
+require("@firebase/auth");
+require("@firebase/firestore")
+require("@firebase/database")
 
 export const firebaseConfig = {
     apiKey: "AIzaSyC2W4ynBW_JTBMdfXNjzZVuHRuBOuTFlgw",
@@ -26,4 +26,6 @@ export const firebaseConfig = {
 var firestore = firebase.firestore();
 var auth = firebase.auth();
 
-module.exports = {firebase, db, firestore, auth}; */
+
+export  {firebase, auth};
+

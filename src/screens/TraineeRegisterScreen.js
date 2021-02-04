@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Alert } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Pressable, Alert } from 'react-native'
+import {firebase, auth} from '../../config/firebase/config.js'
 
 class Inputs extends Component {
    state = {
@@ -37,55 +38,14 @@ class Inputs extends Component {
     this.setState({ weight: text })
    }
   
-textboxErrors() {
+  handleSignUp(){
+      const { emailAddress, password } = this.state
+      auth.createUserWithEmailAndPassword(emailAddress, password).then(() => {
+            this.props.navigation.navigate('HomeScreen')
+         })
+         .catch(error => console.log(error))
+  }
 
-      errors = []
-      passwords = []
-      if(this.state.fullName.length == 0){
-        errors.push("full name")
-      }
-      if(this.state.emailAddress.length == 0){
-        errors.push("email address")
-      }
-      if(this.state.password.length == 0){
-        errors.push("password")
-      }
-      if(this.state.passwordmatch.length == 0){
-        errors.push("password confirmation")
-      }
-      if(this.state.sex.length == 0){
-        errors.push("sex")
-      }
-      if(this.state.age.length == 0){
-        errors.push("age")
-      }
-      if(this.state.height.length == 0){
-        errors.push("height")
-      }
-      if(this.state.weight.length == 0){
-        errors.push("weight")
-      }
-      if(errors.length == 0){
-        if(this.state.password.length < 5 || (this.state.password != this.state.passwordmatch)){
-          if(this.state.password.length < 5){
-            passwords.push("at least 5 characters")
-          }
-          else{
-            passwords.push("match")
-          }
-          Alert.alert("Please make password " + passwords[0])
-          passwords.pop() 
-        }
-        else{
-          Alert.alert("Account created")
-        }
-      }
-      else{
-        Alert.alert("Please fill out your " + errors[0])
-        errors.pop()
-      }
-  
-}
    render() {
       return (
 
