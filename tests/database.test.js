@@ -11,7 +11,7 @@ describe("testing trainer database", () =>  {
         var age = 20
         var height = "6'0"
         var weight = "150 lbs"
-        insertIntoTrainerDatabase(fullName, email, password, sex, age, height, weight);
+        insertIntoTrainerDatabase(fullName,sex,age,height,weight)
     });
 
     //esure that data is removed from database
@@ -28,7 +28,7 @@ describe("testing trainee database", () =>  {
         var age = 20
         var height = "6'0"
         var weight = "150 lbs"
-        insertIntoTraineeDatabase(fullName, email, password, sex, age, height, weight);
+        insertIntoTraineeDatabase(fullName,sex,age,height,weight)
 
         //should expect that you see the data in the database. check how to do that.
     });
