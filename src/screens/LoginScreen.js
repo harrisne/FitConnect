@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     marginBottom: 75,
   },
   textBox: {
+    backgroundColor: "#fff",
     fontSize: 16,
     width: "80%", 
     borderRadius: 30, 

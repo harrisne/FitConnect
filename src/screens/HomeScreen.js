@@ -2,7 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, Button, TouchableOpacity, Dimensions } from 'react-native';
 
-function HomeScreen(props) {
+function HomeScreen({navigation}) {
+
+  const pressSearchScreen = () => {
+    navigation.navigate('Search');
+  }
+
   return (
     <SafeAreaView>
       <StatusBar style="auto" />
@@ -38,7 +43,7 @@ function HomeScreen(props) {
       </ScrollView>
       <SafeAreaView style={{flexDirection:"row"}}>
         <IconButton title="homeIcon" iconSource={require("../assets/home.png")}></IconButton>
-        <IconButton title="searchIcon" iconSource={require("../assets/search.png")}></IconButton>
+        <IconButton title="searchIcon" onPress={pressSearchScreen} iconSource={require("../assets/search.png")}></IconButton>
         <IconButton title="profileIcon" iconSource={require("../assets/profile.png")}></IconButton>
       </SafeAreaView>
     </SafeAreaView>
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
 const PageButton = ({ onPress, title, page }) => (
   <TouchableOpacity onPress={onPress} style={styles.pageButtonContainer}>
     <Text style={{fontSize: 17, color: dotColor[title] ? "#000" : "#cccccc"}}>{page}</Text>
-    <Text style={[styles.dot, {color: dotColor[title] ? "#ff1c99" : "#fff"}]}>{'\u2B24'}</Text>
+    <Text style={[styles.dot, {color: dotColor[title] ? "#ff1c99" : "#f2f2f2"}]}>{'\u2B24'}</Text>
   </TouchableOpacity>
 )
 const CalendarButton = ({ onPress, title, day, date }) => (
