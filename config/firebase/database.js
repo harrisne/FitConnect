@@ -1,17 +1,10 @@
-var {firebase, db, firestore , auth, messages} = require("./config");
-
+var {firestore} = require("./config");
+var {timeConverter} = require("../time");
 
     
-function query() {
-    //search for users in database
-}
-
-function deleteUser() {
-
-}
 
 async function insertIntoTrainerDatabase(fullName, sex, age, height, weight) {
-    await firestore.collection('trainers').doc(fullName).set({
+    await firestore.collection('trainer').doc(fullName).set({
         sex: sex,
         age : age,
         height: height,
@@ -20,7 +13,7 @@ async function insertIntoTrainerDatabase(fullName, sex, age, height, weight) {
 }
 
 async function insertIntoTraineeDatabase(fullName, sex, age, height, weight) {
-    await firestore.collection('trainees').doc(fullName).set({
+    await firestore.collection('trainee').doc(fullName).set({
         sex: sex,
         age : age,
         height: height,
@@ -28,27 +21,11 @@ async function insertIntoTraineeDatabase(fullName, sex, age, height, weight) {
     })
 }
 
-//Old Functions for real time database
-// function insertIntoTrainerDatabase(fullName, email, password, sex, age, height, weight) {
-//     database.ref('trainer/' + fullName).set({
-//             email: email,
-//             password:password,
-//             sex: sex,
-//             age: age,
-//             height: height,
-//             weight: weight
-//     });
-// }
 
-    // function insertIntoTraineeDatabase(fullName, email, password, sex, age, height, weight) {
-    //      database.ref('trainee/' + fullName).set({
-    //             email: email,
-    //             password: password,
-    //             sex: sex,
-    //             age: age,
-    //             height: height,
-    //             weight: weight
-    //     });
-    // }
+async function insertAvailability(fullName, user_type, day, availability) {
+    await firestore.collection(user_type).doc(fullName + "/availability" + "/"+ day)
+    .withConverter(timeConverter)
+    .set(availability)
+}
 
-module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase};
+module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase, insertAvailability};
