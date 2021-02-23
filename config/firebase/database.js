@@ -28,4 +28,23 @@ async function insertAvailability(fullName, user_type, day, availability) {
     .set(availability)
 }
 
-module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase, insertAvailability};
+
+async function addTrainerRate(fullName, rate) {
+    await firestore.collection('trainer').doc(fullName).set({
+        rate: rate
+    })
+}
+
+async function addTraineeDescription(fullName, description) {
+    await firestore.collection('trainee').doc(fullName).set({
+        description: description
+    })
+}
+async function addTrainerDescription(fullName, description) {
+    await firestore.collection('trainer').doc(fullName).set({
+        description: description
+    })
+}
+
+
+module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase, insertAvailability, addTrainerRate, addTraineeDescription, addTrainerDescription};
