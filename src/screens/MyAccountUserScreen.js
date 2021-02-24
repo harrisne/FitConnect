@@ -23,6 +23,13 @@ function MyAccountUserScreen({navigation}) {
   const [heightValue, onHeightText] = React.useState(state.height);
   const [descriptionValue, onChangeDescriptionText] = React.useState('Edit Profile Description');
 
+  function handleSignUp() {    
+    insertIntoTrainerDatabase(nameValue, sexValue, ageValue, heightValue, weightValue);
+    addTrainerRate(nameValue, rateValue);
+    addTrainerDescription(nameValue, descriptionValue)
+  }
+
+
   return (
     
       <ScrollView contentInset={{bottom: 100}}
@@ -72,8 +79,9 @@ function MyAccountUserScreen({navigation}) {
       <DoneButton
             size="sm"
             style={styles.loginButtonText}
-            onPress={() => navigation.navigate('WhoAreYou')}>
-              {/* CHANGE NAVIGATION TO CORRECT PAGE */}
+            onPress={
+              () => { handleSignUp(); navigation.navigate('WhoAreYou');}
+             }>
       </DoneButton>
 
     </ScrollView>

@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInp
 import route from "../navigation/routes";
 import {auth} from '../../config/firebase/config.js'
 import { useEffect } from 'react';
-
+import {insertIntoTrainerDatabase, addTrainerRate, addTrainerDescription} from '../../config/firebase/database';
 
 function MyAccountTrainerScreen({navigation}) {
   let state = {
@@ -18,23 +18,6 @@ function MyAccountTrainerScreen({navigation}) {
     rate: 'Edit Rate',
     description: 'Edit description'
   }
-
-/* FIREBASE ATTEMPT
-  var firstPlayerRef = firebase.database().ref("trainee/").limitToFirst(1);
-  var lastPlayerRef = firebase.database().ref('trainee/').limitToLast(1);
-
-  firstPlayerRef.on("value", function(data) {
-    console.log(data.val());
-  }, function (error) {
-    console.log("Error: " + error.code);
-  });
-
-  lastPlayerRef.on("value", function(data) {
-    console.log(data.val());
-  }, function (error) {
-    console.log("Error: " + error.code);
-  });
-  */
 
   const DescriptionTextInput  = (props) => {
     return (
@@ -54,6 +37,12 @@ function MyAccountTrainerScreen({navigation}) {
   const [heightValue, onHeightText] = React.useState(state.height);
   const [rateValue, onChangeRateText] = React.useState('Add Rate');
   const [descriptionValue, onChangeDescriptionText] = React.useState('Add Profile Description');
+
+  function handleSignUp() {    
+    insertIntoTrainerDatabase(nameValue, sexValue, ageValue, heightValue, weightValue);
+    addTrainerRate(nameValue, rateValue);
+    addTrainerDescription(nameValue, descriptionValue)
+  }
 
   return (
     
@@ -107,37 +96,20 @@ function MyAccountTrainerScreen({navigation}) {
               onChangeText={text => onWeightText(text)}
               />  
 
- 
-        {/* <View
-          style={{
-            backgroundColor: descriptionValue,
-            borderBottomColor: '#000000',
-            borderBottomWidth: 1,
-            paddingHorizontal: 16, 
-            borderColor: 'gray', 
-            borderWidth: 1,
-            height: 70, 
-          }}>
-          <DescriptionTextInput
-              multiline
-              numberOfLines={200}
-              onChangeText={text => onChangeDescriptionText(text)}
-              value={descriptionValue}
-          />
-        </View> */}
-
       <AddAvailabilitesButton
             size="sm"
             style={styles.loginButtonText}
-            onPress={() => navigation.navigate('WhoAreYou')}>
-              {/* CHANGE NAVIGATION TO CORRECT PAGE */}
+            onPress={
+              () => { handleSignUp(); navigation.navigate('WhoAreYou');}
+             }>
       </AddAvailabilitesButton>
 
       <DoneButton
             size="sm"
             style={styles.loginButtonText}
-            onPress={() => navigation.navigate('WhoAreYou')}>
-              {/* CHANGE NAVIGATION TO CORRECT PAGE */}
+            onPress={
+              () => { handleSignUp(); navigation.navigate('WhoAreYou');}
+             }>
       </DoneButton>
 
     </ScrollView>
@@ -145,13 +117,7 @@ function MyAccountTrainerScreen({navigation}) {
   );
 }
 
-function handleSignUp() {
-  const { emailAddress, password } = this.state
-  auth.createUserWithEmailAndPassword(emailAddress, password).then(() => {
-        this.props.navigation.navigate('HomeScreen')
-     })
-     .catch(error => console.log(error))
-}
+
 
 const styles = StyleSheet.create({
   input: {
@@ -216,12 +182,6 @@ const styles = StyleSheet.create({
   }
 });
 
-
-// const Button_ = ({ onPress, title }) => (
-//     <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>
-//       <Text style={styles.loginButtonText}>Sign In</Text>
-//     </TouchableOpacity>
-//   );
 
 const AddAvailabilitesButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>

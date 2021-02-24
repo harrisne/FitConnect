@@ -1,4 +1,4 @@
-//Use this to debug
+// //Use this to debug
 // const firebase = require('firebase');
 
 
@@ -24,9 +24,9 @@
 
 // module.exports =  {firebase, auth, firestore};
 
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-//var firebase = require("firebase/app");
+
+
+
 import firebase from 'firebase';
 
 // Add the Firebase products that you want to use
