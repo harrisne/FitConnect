@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   iconButtonContainer: {
-    marginTop: 20,
+    marginTop: 15,
     marginBottom: 5,
     marginLeft: (Dimensions.get('window').width - 120) / 6,
     marginRight: (Dimensions.get('window').width - 120) / 6,
@@ -150,7 +150,7 @@ class TrainerPreview extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress} style={styles.trainerPreviewButton}>
-        <Image source={require("../assets/profilePic.jpg")} style={styles.profilePic} />
+        <Image source={this.props.photo == "johnBrown" ? require("../assets/johnBrown.jpg") : require("../assets/noPic.jpg")} style={styles.profilePic} />
         <Text style={{ position: "absolute", marginLeft: 90, marginTop: 25, fontSize: 23, fontWeight: "200" }}>{this.props.name}</Text>
         <Text style={{ position: "absolute", marginLeft: 90, marginTop: 58, fontSize: 15, fontWeight: "200" }}>{this.props.exerciseType1}, {this.props.exerciseType2}</Text>
         <StarRating rating={updateRating( this.props.rating )}></StarRating>
@@ -163,11 +163,11 @@ class TrainerPreview extends Component {
 
 class Toggle extends Component {
   trainers = [
-  <TrainerPreview name="John Brown" exerciseType1="Strength" exerciseType2="Aerobic" rating="3" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri"></TrainerPreview>,
-  <TrainerPreview name="Another Trainer" exerciseType1="Strength" exerciseType2="Flexibility" rating="2" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri"></TrainerPreview>,
-  <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="5" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri"></TrainerPreview>,
-  <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="4" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri"></TrainerPreview>
-  ]
+  <TrainerPreview name="John Brown" exerciseType1="Strength" exerciseType2="Aerobic" rating="3" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="johnBrown"></TrainerPreview>,
+  <TrainerPreview name="Another Trainer" exerciseType1="Strength" exerciseType2="Flexibility" rating="2" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
+  <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="5" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
+  <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="4" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>
+  ];
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
@@ -220,7 +220,7 @@ class Toggle extends Component {
             toggleSwitch3 = {this.toggleSwitch3} switch3Value = {this.state.switch3Value}
           ></Filters>
         )}
-        <ScrollView style={{ height: this.state.toggleOn==false ? "84%" : "70.3%", marginTop: 15, marginBottom: 2 }}>
+        <ScrollView style={{ height: this.state.toggleOn==false ? "84%" : "70.22%", marginTop: 15, marginBottom: 2 }}>
           {checkDisplay(this.trainers[0].props.exerciseType1, this.trainers[0].props.exerciseType2, this.state.s1, this.state.s2, this.state.s3) && ( 
             this.trainers[0]
           )}
