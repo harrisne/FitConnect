@@ -2,9 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import firebase from 'firebase';
 import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import route from "../navigation/routes";
-import {auth} from '../../config/firebase/config.js'
-import { useEffect } from 'react';
 import {insertIntoTrainerDatabase, addTrainerRate, addTrainerDescription} from '../../config/firebase/database';
 
 function MyAccountTrainerScreen({navigation}) {
@@ -35,8 +32,8 @@ function MyAccountTrainerScreen({navigation}) {
   const [sexValue, onSexText] = React.useState(state.sex);
   const [weightValue, onWeightText] = React.useState(state.weight);
   const [heightValue, onHeightText] = React.useState(state.height);
-  const [rateValue, onChangeRateText] = React.useState('Add Rate');
-  const [descriptionValue, onChangeDescriptionText] = React.useState('Add Profile Description');
+  const [rateValue, onChangeRateText] = React.useState(state.rate);
+  const [descriptionValue, onChangeDescriptionText] = React.useState(state.description);
 
   function handleSignUp() {    
     insertIntoTrainerDatabase(nameValue, sexValue, ageValue, heightValue, weightValue);
@@ -53,13 +50,18 @@ function MyAccountTrainerScreen({navigation}) {
               <Text style = {styles.text}> Edit Account Information (Trainer) </Text>
             </View>
             <Text style={styles.bodyText}>Full Name: </Text>
-            <TextInput style = {styles.input}
-                           
+            <TextInput style = {styles.input}        
               value={nameValue}
               onChangeText={text => onNameText(text)}  />
 
             <Text style={styles.bodyText}>Profile Descritption: </Text>
-            <TextInput style = {styles.input}
+            <TextInput style = {{    margin: 16,
+                height: 44,
+                borderWidth: 0.7,
+                borderRadius: 13,
+                borderColor: "black",
+                fontSize: 16,
+                multiline: true}}
               onChangeText={text => onChangeDescriptionText(text)}
               value = {descriptionValue}/>
 
@@ -68,7 +70,6 @@ function MyAccountTrainerScreen({navigation}) {
               onChangeText={text => onChangeRateText(text)}
               value={rateValue}
             />
-
               
             <Text style={styles.bodyText}>Email Address: </Text>
            <TextInput style = {styles.input}
@@ -100,7 +101,7 @@ function MyAccountTrainerScreen({navigation}) {
             size="sm"
             style={styles.loginButtonText}
             onPress={
-              () => { handleSignUp(); navigation.navigate('WhoAreYou');}
+              () => { handleSignUp(); navigation.navigate('Home');}
              }>
       </AddAvailabilitesButton>
 
@@ -108,7 +109,7 @@ function MyAccountTrainerScreen({navigation}) {
             size="sm"
             style={styles.loginButtonText}
             onPress={
-              () => { handleSignUp(); navigation.navigate('WhoAreYou');}
+              () => { handleSignUp(); navigation.navigate('Home');}
              }>
       </DoneButton>
 
@@ -116,8 +117,6 @@ function MyAccountTrainerScreen({navigation}) {
     
   );
 }
-
-
 
 const styles = StyleSheet.create({
   input: {
