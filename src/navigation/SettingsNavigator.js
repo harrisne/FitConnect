@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 
 const SettingsNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Settings" component={TempProfileNav} />
+    <Stack.Screen name="Settings" component={TempProfileNav} options={{ headerShown: false }}/>
     <Stack.Screen name="MyAccountTrainer" component={MyAccountTrainer} />
     <Stack.Screen name="Availability" component={AvailabilityScreen} />
     

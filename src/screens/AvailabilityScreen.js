@@ -1000,9 +1000,7 @@ sundayClick(){
             </ScrollView>
 
              <TouchableOpacity style = {styles.createContainer}
-                onPress = {() => {this.confirm(); }}>
-                {/* navigation.navigate('Settings');}}> */}
-                  {/* {navigation} */}
+                onPress = {() => {this.confirm(); this.props.navigation.navigate('Settings');}}>
                 <Text style = {styles.createButtonText}> Confirm </Text>
             </TouchableOpacity>
            
