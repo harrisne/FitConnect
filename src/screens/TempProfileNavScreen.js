@@ -3,23 +3,18 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput } from 'react-native';
 import route from "../navigation/routes";
 
-function WelcomeScreen({navigation}) {
+
+//THIS IS A TEMP PLACEHOLDER PAGE TO BE REPLACED BY THE MESSAGES / VIDEO CHAT PAGE
+function TempProfileNavScreen({navigation}) {
   return (
     <SafeAreaView>
         <StatusBar style="auto" />
-        <Text style={styles.titleText}>Who Are You?</Text>
-        {/* <Text style={styles.titleText}>Log In</Text> */}
-        
-        <LoginButton 
-            title="Trainee"
-            size="sm"
-            onPress={() => navigation.navigate('TraineeRegister')}>
-        </LoginButton>
-        {/* &nbsp;&nbsp;&nbsp; */}
+        <Text style={styles.titleText}>My Profile</Text>
+
         <SignUpButton
-            title="Trainer"
+            title="EDIT PROFILE"
             size="sm"
-            onPress={() => navigation.navigate('TrainerRegister')}>
+            onPress={() => navigation.navigate('MyAccountTrainer')}>
         </SignUpButton>
 
       {/* <ForgotPasswordButton title="ForgotPassword"></ForgotPasswordButton> */}
@@ -33,7 +28,6 @@ const styles = StyleSheet.create({
     color: "#ff1c99",
     fontWeight: "bold",
     alignSelf: "center",
-    //textTransform: "uppercase",
     marginTop: 200,
     marginBottom: 75,
   },
@@ -61,7 +55,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     alignSelf: "center",
-    textTransform: "uppercase",
   },
   forgotPasswordText: {
     fontSize: 15,
@@ -74,15 +67,15 @@ const styles = StyleSheet.create({
 
 const LoginButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>
-      <Text style={styles.loginButtonText}>I am a trainee</Text>
+      <Text style={styles.loginButtonText}>My Messages</Text>
     </TouchableOpacity>
   );
 
 const SignUpButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>
-      <Text style={styles.loginButtonText}>I am a trainer</Text>
+      <Text style={styles.loginButtonText}>Edit Profile Info</Text>
     </TouchableOpacity>
   );
 
 
-export default WelcomeScreen;
+export default TempProfileNavScreen;

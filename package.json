@@ -34,6 +34,7 @@
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
     "react-router-dom": "^5.2.0",
+    "react.pure.component": "^1.2.0",
     "rn-round-checkbox": "^1.0.0"
   },
   "devDependencies": {

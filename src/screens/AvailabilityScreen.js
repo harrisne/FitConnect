@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { View, Switch, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Alert } from 'react-native'
 import Slider from '@react-native-community/slider';
 import SwitchSelector from 'react-native-switch-selector';
-import RoundCheckbox from 'rn-round-checkbox';
+//import RoundCheckbox from 'rn-round-checkbox';
 
 
 
@@ -244,14 +244,14 @@ sundayClick(){
                   soo
               </Text>
 
-              <RoundCheckbox
+              {/* <RoundCheckbox
                 size={40}
                 borderColor= "black"
                 backgroundColor= '#ff1c99'
                 iconColor	= 'white'
                 checked = {this.state.isSelectedMonday}
                 onValueChange = {() => {this.mondayClick()}}
-              />
+              /> */}
              
               <Text style = {styles.days}> Monday </Text>
 
@@ -353,14 +353,14 @@ sundayClick(){
               <Text style={styles.buffer}>soo</Text>
               
 
-              <RoundCheckbox
+              {/* <RoundCheckbox
                 size={40}
                 borderColor= "black"
                 backgroundColor= '#ff1c99'
                 iconColor	= 'white'
                 checked = {this.state.isSelectedTuesday}
                 onValueChange = {() => {this.tuesdayClick()}}
-              />
+              /> */}
              
               <Text style = {styles.days}> Tuesday </Text>
 
@@ -462,14 +462,14 @@ sundayClick(){
               <Text style={styles.buffer}>soo</Text>
               
 
-              <RoundCheckbox
+              {/* <RoundCheckbox
                 size={40}
                 borderColor= "black"
                 backgroundColor= '#ff1c99'
                 iconColor	= 'white'
                 checked = {this.state.isSelectedWed}
                 onValueChange = {() => {this.wednedsayClick()}}
-              />
+              /> */}
              
               <Text style = {styles.Wednesday}> Wednesday </Text>
 
@@ -571,7 +571,7 @@ sundayClick(){
               
               <Text style={styles.buffer}>soo</Text>
               
-
+{/* 
               <RoundCheckbox
                 size={40}
                 borderColor= "black"
@@ -579,7 +579,7 @@ sundayClick(){
                 iconColor	= 'white'
                 checked = {this.state.isSelectedThursday}
                 onValueChange = {() => {this.thursdayClick()}}
-              />
+              /> */}
              
               <Text style = {styles.days}> Thursday </Text>
 
@@ -681,14 +681,14 @@ sundayClick(){
               <Text style={styles.buffer}>soo</Text>
               
 
-              <RoundCheckbox
+              {/* <RoundCheckbox
                 size={40}
                 borderColor= "black"
                 backgroundColor= '#ff1c99'
                 iconColor	= 'white'
                 checked = {this.state.isSelectedFriday}
                 onValueChange = {() => {this.fridayClick()}}
-              />
+              /> */}
              
               <Text style = {styles.days}> Friday </Text>
 
@@ -792,14 +792,14 @@ sundayClick(){
               <Text style={styles.buffer}>soo</Text>
               
 
-              <RoundCheckbox
+              {/* <RoundCheckbox
                 size={40}
                 borderColor= "black"
                 backgroundColor= '#ff1c99'
                 iconColor	= 'white'
                 checked = {this.state.isSelectedSaturday}
                 onValueChange = {() => {this.saturdayClick()}}
-              />
+              /> */}
              
               <Text style = {styles.days}> Saturday </Text>
 
@@ -902,14 +902,14 @@ sundayClick(){
               <Text style={styles.buffer}>soo</Text>
               
 
-              <RoundCheckbox
+              {/* <RoundCheckbox
                 size={40}
                 borderColor= "black"
                 backgroundColor= '#ff1c99'
                 iconColor	= 'white'
                 checked = {this.state.isSelectedSunday}
                 onValueChange = {() => {this.sundayClick()}}
-              />
+              /> */}
              
               <Text style = {styles.days}> Sunday </Text>
 
@@ -1000,7 +1000,9 @@ sundayClick(){
             </ScrollView>
 
              <TouchableOpacity style = {styles.createContainer}
-                onPress = {() => {this.confirm()}}>
+                onPress = {() => {this.confirm(); }}>
+                {/* navigation.navigate('Settings');}}> */}
+                  {/* {navigation} */}
                 <Text style = {styles.createButtonText}> Confirm </Text>
             </TouchableOpacity>
            

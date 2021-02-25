@@ -101,7 +101,7 @@ function MyAccountTrainerScreen({navigation}) {
             size="sm"
             style={styles.loginButtonText}
             onPress={
-              () => { handleSignUp(); navigation.navigate('Home');}
+              () => { handleSignUp(); navigation.navigate('Availability');}
              }>
       </AddAvailabilitesButton>
 
@@ -109,7 +109,7 @@ function MyAccountTrainerScreen({navigation}) {
             size="sm"
             style={styles.loginButtonText}
             onPress={
-              () => { handleSignUp(); navigation.navigate('Home');}
+              () => { handleSignUp(); navigation.navigate('Settings');}
              }>
       </DoneButton>
 

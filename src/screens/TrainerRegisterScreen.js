@@ -49,7 +49,7 @@ class Inputs extends Component {
        .catch(error => console.log(error))
 }
   
-   render() {
+   render({navigation}) {
       return (
 
           <ScrollView contentInset={{bottom: 100}}
@@ -168,7 +168,7 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
       <TouchableOpacity style = {styles.createContainer}  
-            onPress = {() => {this.handleSignUp()}}>
+            onPress = {() => {this.handleSignUp(); navigation.navigate('Login');}}>
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
 

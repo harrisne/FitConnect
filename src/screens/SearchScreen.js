@@ -8,11 +8,11 @@ function SearchScreen({ navigation }) {
       <StatusBar style="auto" />
       <Text style={{ fontSize: 23, color: "#000", fontWeight: "bold", marginLeft: 16, marginTop: 20, marginBottom: 5 }}>Find Trainers</Text>
       <Toggle></Toggle>
-      <SafeAreaView style={{ flexDirection: "row" }}>
+      {/* <SafeAreaView style={{ flexDirection: "row" }}>
         <IconButton title="homeIcon" iconSource={require("../assets/home.png")}></IconButton>
         <IconButton title="searchIcon" iconSource={require("../assets/search.png")}></IconButton>
         <IconButton title="profileIcon" iconSource={require("../assets/profile.png")}></IconButton>
-      </SafeAreaView>
+      </SafeAreaView> */}
     </SafeAreaView>
   );
 }
