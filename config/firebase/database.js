@@ -54,9 +54,10 @@ async function inDatabase(user_type, fullName) {
     const docRef = firestore.collection(user_type).doc(fullName);
     const data = await docRef.get();
     if (!data.exists) {
-        console.log('No such document!');
+        return "No user in database";
       } else {
-        return await data.data();
+          return Promise.resolve(data.data());
+        //return data.data();
       }
 }
 
