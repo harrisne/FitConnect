@@ -220,7 +220,7 @@ class Toggle extends Component {
             toggleSwitch3 = {this.toggleSwitch3} switch3Value = {this.state.switch3Value}
           ></Filters>
         )}
-        <ScrollView style={{ height: this.state.toggleOn==false ? "84%" : "70.22%", marginTop: 15, marginBottom: 2 }}>
+        <ScrollView style={{ marginTop: 15, marginBottom: 2 }}>
           {checkDisplay(this.trainers[0].props.exerciseType1, this.trainers[0].props.exerciseType2, this.state.s1, this.state.s2, this.state.s3) && ( 
             this.trainers[0]
           )}
