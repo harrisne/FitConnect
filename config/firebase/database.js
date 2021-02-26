@@ -61,6 +61,10 @@ async function inDatabase(user_type, fullName) {
       }
 }
 
+// inDatabase("trainer", "d").then(value => {
+//     return value;
+// });
+
 
 module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase, addAvailability, 
     addTrainerRate, addTraineeDescription, addTrainerDescription, inDatabase};
