@@ -3,9 +3,11 @@ import React, { Component } from 'react'
 import { View, Switch, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Alert } from 'react-native'
 import Slider from '@react-native-community/slider';
 import SwitchSelector from 'react-native-switch-selector';
-//import RoundCheckbox from 'rn-round-checkbox';
+//import RoundCheckbox from 'rn-round-checkbox'; // 
 
-
+// if you are running this in the web browser simulator, comment out the RoundCheckbox code for each 
+// availability day. the RoundCheckbox works on the iOS simulator. this applies to the import 
+// for RoundCheckbox as well.
 
 class Inputs extends Component {
 
@@ -571,8 +573,8 @@ sundayClick(){
               
               <Text style={styles.buffer}>soo</Text>
               
-{/* 
-              <RoundCheckbox
+
+              {/* <RoundCheckbox
                 size={40}
                 borderColor= "black"
                 backgroundColor= '#ff1c99'
@@ -1068,7 +1070,7 @@ const styles = StyleSheet.create({
 
    },
    buffer: {
-    color: 'white',
+    color: '#f2f2f2',
     paddingLeft: 20
    },
    days:{
