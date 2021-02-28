@@ -117,7 +117,7 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
          <TouchableOpacity style = {styles.createContainer}  
-            onPress = {() => {this.handleSignUp()}}>
+            onPress = {() => {this.handleSignUp(); this.props.navigation.navigate('Login');}}>
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
 

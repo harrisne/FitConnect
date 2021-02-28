@@ -2,21 +2,30 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, Button, TouchableOpacity, Dimensions } from 'react-native';
 
-function HomeScreen(props) {
+function HomeScreen({navigation}) {
+
+  const pressSearchScreen = () => {
+    navigation.navigate('Search');
+  }
+
+  const pressProfileScreen = () => {
+    navigation.navigate('TempProfileNav');
+  }
+
   return (
     <SafeAreaView>
       <StatusBar style="auto" />
-      <ScrollView horizontal={true}>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <PageButton title="home" page="Home"></PageButton>
         <PageButton title="myTrainers" page="My Trainers"></PageButton>
-        <PageButton title="messages" page="Messages"></PageButton>
+        {/* <PageButton title="messages" page="Messages"></PageButton> */}
         <PageButton title="recommendedTrainers" page="Recommended Trainers"></PageButton>
-        <PageButton title="settings" page="Settings"></PageButton>
+        {/* <PageButton title="settings" page="Settings"></PageButton> */}
       </ScrollView>
-      <Image source={require("../assets/profilePic.jpg")} style={styles.profilePic} />
-      <Text style={styles.nameText}>Jessica Smith</Text>
-      <Text style={styles.sectionTitleText}>Quick Calendar</Text>
-      <ScrollView horizontal={true}>
+        <Image source={require("../assets/jessicaSmith.jpg")} style={styles.profilePic} />
+        <Text style={styles.nameText}>Jessica Smith</Text>
+        <Text style={styles.sectionTitleText}>Quick Calendar</Text>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <CalendarButton title="tues" day="TUES" date="12"></CalendarButton>
         <CalendarButton title="wed" day="WED" date="13"></CalendarButton>
         <CalendarButton title="thur" day="THUR" date="14"></CalendarButton>
@@ -29,18 +38,18 @@ function HomeScreen(props) {
         <Text style={styles.sectionTitleText}>Appointments</Text>
         <Text style={[styles.sectionTitleText, {position: "absolute", right: 0, marginRight: 15, color: "#ff1c99", textDecorationLine: "underline"}]}>See All Appointments</Text>
       </SafeAreaView>
-      <ScrollView style={{height: "40%"}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <UpcomingAppointmentButton title="appt1" name="Elwood Norton" attr1="Strength" attr2="Aerobic" startTime="4:00 PM" endTime="5:00 PM"></UpcomingAppointmentButton>
-        <UpcomingAppointmentButton title="appt2" name="Elwood Norton" attr1="Strength" attr2="Aerobic" startTime="10:00 AM" endTime="12:00 PM"></UpcomingAppointmentButton>
-        <UpcomingAppointmentButton title="appt3" name="Elwood Norton" attr1="Strength" attr2="Aerobic" startTime="1:00 PM" endTime="2:00 PM"></UpcomingAppointmentButton>
-        <UpcomingAppointmentButton title="appt4" name="Elwood Norton" attr1="Strength" attr2="Aerobic" startTime="12:00 PM" endTime="12:30 PM"></UpcomingAppointmentButton>
-        <UpcomingAppointmentButton title="appt5" name="Elwood Norton" attr1="Strength" attr2="Aerobic" startTime="4:00 PM" endTime="5:00 PM"></UpcomingAppointmentButton>
+        <UpcomingAppointmentButton title="appt2" name="John Brown" attr1="Strength" attr2="Flexibility" startTime="10:00 AM" endTime="12:00 PM"></UpcomingAppointmentButton>
+        <UpcomingAppointmentButton title="appt3" name="Another Trainer" attr1="Flexibility" attr2="Aerobic" startTime="1:00 PM" endTime="2:00 PM"></UpcomingAppointmentButton>
+        <UpcomingAppointmentButton title="appt4" name="Another Trainer" attr1="Strength" attr2="Aerobic" startTime="12:00 PM" endTime="12:30 PM"></UpcomingAppointmentButton>
+        <UpcomingAppointmentButton title="appt5" name="Another Trainer" attr1="Strength" attr2="Aerobic" startTime="4:00 PM" endTime="5:00 PM"></UpcomingAppointmentButton>
       </ScrollView>
-      <SafeAreaView style={{flexDirection:"row"}}>
+      {/* <SafeAreaView style={{flexDirection:"row"}}>
         <IconButton title="homeIcon" iconSource={require("../assets/home.png")}></IconButton>
-        <IconButton title="searchIcon" iconSource={require("../assets/search.png")}></IconButton>
-        <IconButton title="profileIcon" iconSource={require("../assets/profile.png")}></IconButton>
-      </SafeAreaView>
+        <IconButton title="searchIcon" onPress={pressSearchScreen} iconSource={require("../assets/search.png")}></IconButton>
+        <IconButton title="profileIcon" onPress={pressProfileScreen} iconSource={require("../assets/profile.png")}></IconButton>
+      </SafeAreaView> */}
     </SafeAreaView>
   );
 }
@@ -97,6 +106,7 @@ const styles = StyleSheet.create({
   },
   upcomingAppointmentButtonText1: {
     fontSize: 18,
+    fontWeight: "300",
     //marginBottom: -7.5,
   },
   upcomingAppointmentButtonText2: {
@@ -135,6 +145,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     alignSelf: "center",
     marginBottom: 55,
+    fontWeight: "200",
   },
   profilePic: {
     //flex: 1,
@@ -153,8 +164,8 @@ const styles = StyleSheet.create({
 
 const PageButton = ({ onPress, title, page }) => (
   <TouchableOpacity onPress={onPress} style={styles.pageButtonContainer}>
-    <Text style={{fontSize: 17, color: dotColor[title] ? "#000" : "#cccccc"}}>{page}</Text>
-    <Text style={[styles.dot, {color: dotColor[title] ? "#ff1c99" : "#fff"}]}>{'\u2B24'}</Text>
+    <Text style={{fontSize: 17, fontWeight: "300", color: dotColor[title] ? "#000" : "#cccccc"}}>{page}</Text>
+    <Text style={[styles.dot, {color: dotColor[title] ? "#ff1c99" : "#f2f2f2"}]}>{'\u2B24'}</Text>
   </TouchableOpacity>
 )
 const CalendarButton = ({ onPress, title, day, date }) => (

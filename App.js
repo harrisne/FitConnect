@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import AuthNavigator from "./src/navigation/AuthNavigator";
+import TabNavigator from "./src/navigation/TabNavigator";
 
-import AppNavigator from "./src/navigation/AppNavigator";
-
-const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <AppNavigator />
+      <AuthNavigator />
+      {/* <TabNavigator/> */}
     </NavigationContainer>
   );
 }
