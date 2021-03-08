@@ -1,40 +1,44 @@
-var {firebase, db, auth, messages} = require("../config/firebase/config");
-var {insertIntoTraineeDatabase, insertIntoTrainerDatabase} = require('../config/firebase/database')
+var { time } = require("../config/time");
+var { insertIntoTraineeDatabase, insertIntoTrainerDatabase, addAvailability, inDatabase } = require('../config/firebase/database')
 
-describe("testing trainer database", () =>  {
+describe("testing trainer database", () => {
 
     test('adds data to database', () => {
-        var fullName = "Trainee"
-        var email = "email@gmail.com"
-        var password = "password"
+        var fullName = "Jannise Doer"
         var sex = "female"
-        var age = 20
+        var age = "20"
         var height = "6'0"
         var weight = "150 lbs"
-        insertIntoTrainerDatabase(fullName, email, password, sex, age, height, weight);
+
+        insertIntoTrainerDatabase(fullName, sex, age, height, weight)
+
+        expect(inDatabase("trainer", fullName).age).toBe("20")
     });
 
-    //esure that data is removed from database
-    //ensure that we can query data in database
-    //ensure that we can update data in database
+    // test('adds availability', () => {
+    //     addAvailability('Jannise Doer', "trainer", "monday", new time(6, 7)).catch()
+    // });
+
 });
 
-describe("testing trainee database", () =>  {
-      test('adds data to the database', () => {
+describe("testing trainee database", () => {
+    test('adds data to the database', () => {
         var fullName = "Trainee"
-        var email = "email@gmail.com"
-        var password = "password"
         var sex = "female"
-        var age = 20
+        var age = "22"
         var height = "6'0"
         var weight = "150 lbs"
-        insertIntoTraineeDatabase(fullName, email, password, sex, age, height, weight);
 
-        //should expect that you see the data in the database. check how to do that.
+        insertIntoTraineeDatabase(fullName, sex, age, height, weight)
+
+
+        expect(inDatabase("trainee", fullName).age).toBe("22")
+
     });
 
-    //esure that data is removed from database
-    //ensure that we can query data in database
-    //ensure that we can update data in database    
+    // test('adds availability', () => {
+    //     addAvailability('Trainee', "trainee", "monday", new time(6, 7)).catch()
+    // });
+
 });
 

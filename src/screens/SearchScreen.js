@@ -6,6 +6,7 @@ function SearchScreen({ navigation }) {
   return (
     <SafeAreaView>
       <StatusBar style="auto" />
+<<<<<<< HEAD
       <Text style={{ fontSize: 23, color: "#000", fontWeight: "400", marginLeft: 16, marginTop: 20, marginBottom: 5 }}>Find Trainers</Text>
       <Toggle></Toggle>
       <SafeAreaView style={{ flexDirection: "row" }}>
@@ -13,6 +14,15 @@ function SearchScreen({ navigation }) {
         <IconButton title="searchIcon" iconSource={require("../assets/search.png")}></IconButton>
         <IconButton title="profileIcon" iconSource={require("../assets/profile.png")}></IconButton>
       </SafeAreaView>
+=======
+      <Text style={{ fontSize: 23, color: "#000", fontWeight: "bold", marginLeft: 16, marginTop: 20, marginBottom: 5 }}>Find Trainers</Text>
+      <Toggle></Toggle>
+      {/* <SafeAreaView style={{ flexDirection: "row" }}>
+        <IconButton title="homeIcon" iconSource={require("../assets/home.png")}></IconButton>
+        <IconButton title="searchIcon" iconSource={require("../assets/search.png")}></IconButton>
+        <IconButton title="profileIcon" iconSource={require("../assets/profile.png")}></IconButton>
+      </SafeAreaView> */}
+>>>>>>> main
     </SafeAreaView>
   );
 }
@@ -220,7 +230,11 @@ class Toggle extends Component {
             toggleSwitch3 = {this.toggleSwitch3} switch3Value = {this.state.switch3Value}
           ></Filters>
         )}
+<<<<<<< HEAD
         <ScrollView showsVerticalScrollIndicator={false} style={{ height: this.state.toggleOn==false ? "84%" : "70.22%", marginTop: 15, marginBottom: 2 }}>
+=======
+        <ScrollView style={{ marginTop: 15, marginBottom: 2 }}>
+>>>>>>> main
           {checkDisplay(this.trainers[0].props.exerciseType1, this.trainers[0].props.exerciseType2, this.state.s1, this.state.s2, this.state.s3) && ( 
             this.trainers[0]
           )}

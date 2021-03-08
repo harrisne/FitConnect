@@ -18,7 +18,7 @@ function LoginScreen({navigation}) {
       alert("Please enter a valid password");
       return;
     }
-    navigation.navigate('Home');
+    navigation.navigate('TabNavigator');
     //console.log({email}, {password});
   }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, Button, TextInput, StyleSheet, Pressable, Alert, TouchableOpacity, ScrollView } from 'react-native'
 import {auth} from '../../config/firebase/config.js'
+import {insertIntoTrainerDatabase} from '../../config/firebase/database'
 
 class Inputs extends Component {
    state = {
@@ -40,14 +41,15 @@ class Inputs extends Component {
 
    
    handleSignUp(){
-    const { emailAddress, password } = this.state
+    const { emailAddress, password, fullName, sex, age, height, weight } = this.state
     auth.createUserWithEmailAndPassword(emailAddress, password).then(() => {
-          this.props.navigation.navigate('HomeScreen')
+      insertIntoTrainerDatabase(fullName,sex,age,height,weight)
+          // this.props.navigation.navigate('HomeScreen')
        })
        .catch(error => console.log(error))
 }
   
-   render() {
+   render({navigation}) {
       return (
 
           <ScrollView contentInset={{bottom: 100}}
@@ -166,7 +168,7 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
       <TouchableOpacity style = {styles.createContainer}  
-            onPress = {() => {this.handleSignUp()}}>
+            onPress = {() => {this.handleSignUp(); this.props.navigation.navigate('Login');}}>
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
 

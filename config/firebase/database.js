@@ -1,44 +1,65 @@
-var {firebase, db, auth, messages} = require("./config");
+var {firestore} = require("./config");
+var {timeConverter} = require("../time");
 
-
-var database = firebase.database()
-
-function isvalidEntry(username, password) {
-	var valid = true;
-	if (username.length < 5 || password.length < 5) {
-		valid = false;
-	}
-    return valid
-}
     
-function query() {
-    //search for users in database
+
+async function insertIntoTrainerDatabase(fullName, sex, age, height, weight) {
+    await firestore.collection('trainer').doc(fullName).set({
+        sex: sex,
+        age : age,
+        height: height,
+        weight: weight
+    })
 }
 
-function deleteUser() {
-
+async function insertIntoTraineeDatabase(fullName, sex, age, height, weight) {
+    await firestore.collection('trainee').doc(fullName).set({
+        sex: sex,
+        age : age,
+        height: height,
+        weight: weight
+    })
 }
 
-function insertIntoTrainerDatabase(fullName, email, password, sex, age, height, weight) {
-    database.ref('trainer/' + fullName).set({
-            email: email,
-            password:password,
-            sex: sex,
-            age: age,
-            height: height,
-            weight: weight
+
+async function addAvailability(fullName, user_type, day, availability) {
+    await firestore.collection(user_type).doc(fullName + "/availability" + "/"+ day)
+    .withConverter(timeConverter)
+    .set(availability);
+    //Promise.reject("no user in database");
+}
+
+
+async function addTrainerRate(fullName, rate) {
+    await firestore.collection('trainer').doc(fullName).update({
+        rate: rate
     });
+    Promise.reject("no user in database");
 }
 
-    function insertIntoTraineeDatabase(fullName, email, password, sex, age, height, weight) {
-         database.ref('trainee/' + fullName).set({
-                email: email,
-                password: password,
-                sex: sex,
-                age: age,
-                height: height,
-                weight: weight
-        });
-    }
+async function addTraineeDescription(fullName, description) {
+    await firestore.collection('trainee').doc(fullName).update({
+        description: description
+    });
+    Promise.reject("no user in database");
+}
+async function addTrainerDescription(fullName, description) {
+    await firestore.collection('trainer').doc(fullName).update({
+        description: description
+    });
+    Promise.reject("no user in database");
+}
 
-    module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase};
+async function inDatabase(user_type, fullName) {
+    const docRef = firestore.collection(user_type).doc(fullName);
+    const data = await docRef.get();
+    if (!data.exists) {
+        console.log('No such document!');
+      } else {
+        return await data.data();
+      }
+}
+
+
+module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase, addAvailability, 
+    addTrainerRate, addTraineeDescription, addTrainerDescription, inDatabase};
