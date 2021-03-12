@@ -13,7 +13,7 @@ function HomeScreen({navigation}) {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
       <StatusBar style="auto" />
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <PageButton title="home" page="Home"></PageButton>
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
 
 const PageButton = ({ onPress, title, page }) => (
   <TouchableOpacity onPress={onPress} style={styles.pageButtonContainer}>
-    <Text style={{fontSize: 17, fontWeight: "300", color: dotColor[title] ? "#000" : "#cccccc"}}>{page}</Text>
+    <Text style={{fontSize: 17, fontWeight: "400", color: dotColor[title] ? "#000" : "#cccccc"}}>{page}</Text>
     <Text style={[styles.dot, {color: dotColor[title] ? "#ff1c99" : "#f2f2f2"}]}>{'\u2B24'}</Text>
   </TouchableOpacity>
 )

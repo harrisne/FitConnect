@@ -3,26 +3,19 @@ import React, { Component, useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, Button, TouchableOpacity, Dimensions, Switch } from 'react-native';
 
 function SearchScreen({ navigation }) {
+  const pressTrainerProfile = () => {
+    navigation.navigate('TrainerProfile');
+  }
   return (
     <SafeAreaView>
       <StatusBar style="auto" />
-<<<<<<< HEAD
       <Text style={{ fontSize: 23, color: "#000", fontWeight: "400", marginLeft: 16, marginTop: 20, marginBottom: 5 }}>Find Trainers</Text>
-      <Toggle></Toggle>
-      <SafeAreaView style={{ flexDirection: "row" }}>
-        <IconButton title="homeIcon" iconSource={require("../assets/home.png")}></IconButton>
-        <IconButton title="searchIcon" iconSource={require("../assets/search.png")}></IconButton>
-        <IconButton title="profileIcon" iconSource={require("../assets/profile.png")}></IconButton>
-      </SafeAreaView>
-=======
-      <Text style={{ fontSize: 23, color: "#000", fontWeight: "bold", marginLeft: 16, marginTop: 20, marginBottom: 5 }}>Find Trainers</Text>
-      <Toggle></Toggle>
+      <Toggle pressTrainerProfile={pressTrainerProfile}></Toggle>
       {/* <SafeAreaView style={{ flexDirection: "row" }}>
         <IconButton title="homeIcon" iconSource={require("../assets/home.png")}></IconButton>
         <IconButton title="searchIcon" iconSource={require("../assets/search.png")}></IconButton>
         <IconButton title="profileIcon" iconSource={require("../assets/profile.png")}></IconButton>
       </SafeAreaView> */}
->>>>>>> main
     </SafeAreaView>
   );
 }
@@ -173,7 +166,7 @@ class TrainerPreview extends Component {
 
 class Toggle extends Component {
   trainers = [
-  <TrainerPreview name="John Brown" exerciseType1="Strength" exerciseType2="Aerobic" rating="3" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="johnBrown"></TrainerPreview>,
+  <TrainerPreview name="John Brown" onPress={this.props.pressTrainerProfile} exerciseType1="Strength" exerciseType2="Aerobic" rating="3" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="johnBrown"></TrainerPreview>,
   <TrainerPreview name="Another Trainer" exerciseType1="Strength" exerciseType2="Flexibility" rating="2" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
   <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="5" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
   <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="4" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>
@@ -181,7 +174,7 @@ class Toggle extends Component {
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
-    this.previews;
+    this.pressTrainerProfile;
   }
   state = {
     on: false,
@@ -230,11 +223,7 @@ class Toggle extends Component {
             toggleSwitch3 = {this.toggleSwitch3} switch3Value = {this.state.switch3Value}
           ></Filters>
         )}
-<<<<<<< HEAD
-        <ScrollView showsVerticalScrollIndicator={false} style={{ height: this.state.toggleOn==false ? "84%" : "70.22%", marginTop: 15, marginBottom: 2 }}>
-=======
         <ScrollView style={{ marginTop: 15, marginBottom: 2 }}>
->>>>>>> main
           {checkDisplay(this.trainers[0].props.exerciseType1, this.trainers[0].props.exerciseType2, this.state.s1, this.state.s2, this.state.s3) && ( 
             this.trainers[0]
           )}
