@@ -9,10 +9,10 @@ function TrainerProfileScreen({navigation}) {
     navigation.navigate('Search');
   }
 
-  const [show, setShow] = useState(false);
-  const handleModal = () => {
-    setShow(!show)
-  }
+  // const [show, setShow] = useState(false);
+  // const handleModal = () => {
+  //   setShow(!show)
+  // }
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -43,7 +43,7 @@ function TrainerProfileScreen({navigation}) {
         <Text style={{marginLeft: 30, marginTop: 40, marginBottom: 5, fontSize: 20, fontWeight: "300", color: "#ff1c99"}}>Appointments</Text>
         <SafeAreaView>
           <Calendar
-            onDayPress={handleModal}
+            // onDayPress={handleModal}
             theme={{
               calendarBackground: "#f2f2f2",
               todayTextColor: '#ff1c99',
@@ -72,19 +72,17 @@ function TrainerProfileScreen({navigation}) {
               '2021-03-28': {disabled: true, disableTouchEvent: true}, //unavailable
             }}
           ></Calendar>
-          <Modal transparent={true} visible={show}>
+          {/* <Modal transparent={true} visible={show}>
             <View style={{backgroundColor: "#000000aa", flex:1}}>
               <View style={{backgroundColor: "#f2f2f2", marginLeft: 25, marginRight: 25, marginTop: 300, marginBottom: 300, padding: 30, borderRadius: 50, flex:1}}>
                 <Text style={{marginBottom: 2, alignSelf: "center", fontSize: 18, fontWeight: "400", color: "#ff1c99"}}>Appointment Request</Text>
-                {/* day text value does not change */}
                 <Text style={{marginBottom: 12, alignSelf: "center", fontSize: 14, fontWeight: "200", color: "#ff1c99"}}>March 12, 2021</Text>
                 <TextInput placeholder="Appointment time" style={styles.textBox}/>
-                {/* onChangeText={(value) => setEmail(value)} */}
                 <TextInput placeholder="Additional information" style={styles.textBox}/>
                 <SubmitButton title="submit" onPress={handleModal} style={styles.messageButtonContainer}></SubmitButton>
               </View>
             </View>
-          </Modal>
+          </Modal> */}
         </SafeAreaView>
         <VideoChatButton></VideoChatButton>
       </ScrollView>
