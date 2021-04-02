@@ -7,6 +7,7 @@ import WelcomeScreen from "../screens/WelcomeScreen"
 import WhoAreYouScreen from "../screens/WhoAreYouScreen"
 import TabNavigator from "./TabNavigator";
 import TrainerProfileScreen from "../screens/TrainerProfileScreen";
+import TrainerTimeScreen from "../screens/TrainerTimesScreen";
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const AuthNavigator = () => (
     <Stack.Screen name="TraineeRegister" component={TraineeRegisterScreen} />
     <Stack.Screen name="TrainerRegister" component={TrainerRegisterScreen} />
     <Stack.Screen name="TrainerProfile" component={TrainerProfileScreen} options={{ headerShown: false }}/>
+    <Stack.Screen name="TrainerTimeScreen" component={TrainerTimeScreen} options={{ headerShown: false }}/>
     <Stack.Screen name="TabNavigator" component={TabNavigator} options={{ headerShown: false }}/>
     
   </Stack.Navigator>
