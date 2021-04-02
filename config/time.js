@@ -37,7 +37,8 @@ var timeConverter = {
         const data = snapshot.data(options);
         data.start = convertTimestamps(data.start);
         data.end = convertTimestamps(data.end);
-        return data.start;
+        newArray = [data.start, data.end];
+        return newArray;
     }
 };
 
