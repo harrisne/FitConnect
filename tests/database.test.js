@@ -12,7 +12,11 @@ describe("testing trainer database", () => {
 
         insertIntoTrainerDatabase(fullName, sex, age, height, weight)
 
-        expect(inDatabase("trainer", fullName).age).toBe("20")
+        // var trainer = async () => {
+        //     return await inDatabase("trainer", fullName)
+
+        // }
+        // expect(trainer.age).toBe("20")
     });
 
     // test('adds availability', () => {
@@ -32,13 +36,17 @@ describe("testing trainee database", () => {
         insertIntoTraineeDatabase(fullName, sex, age, height, weight)
 
 
-        expect(inDatabase("trainee", fullName).age).toBe("22")
-
     });
 
-    // test('adds availability', () => {
-    //     addAvailability('Trainee', "trainee", "monday", new time(6, 7)).catch()
-    // });
+    test("find user in database", async () => {
+        return inDatabase("trainer", "Bobby").then(value => {
+            expect(value.sex).toBe('male');
+        });
+    })
+
+    test('adds availability', () => {
+        addAvailability('Trainee', "trainee", "monday", new time(6, 7)).catch()
+    });
 
 });
 
