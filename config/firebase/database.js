@@ -249,7 +249,7 @@ var description = "Hi! I'm Stephanie. I'm a trainee looking for aerobic training
 // });
 
 module.exports = {insertIntoTraineeDatabase, insertIntoTrainerDatabase, addAvailability, 
-    addTrainerRate, addTraineeDescription, addTrainerDescription, inDatabase};
+    addTrainerRate, addTraineeDescription, addTrainerDescription, inDatabase, showCollection};
 
 // {
 //     "availability": [Monday, Tuesday, Wednesday, Thursday, Friday],

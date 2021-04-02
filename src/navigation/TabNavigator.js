@@ -7,6 +7,7 @@ import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
 import ProfileScreen from "../screens/TempProfileNavScreen";
 import SettingsNavigator from "../navigation/SettingsNavigator";
+import TrainerProfileScreen from "../screens/TrainerProfileScreen";
 
 
 function MessagesScreen() {

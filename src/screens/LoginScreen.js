@@ -31,7 +31,9 @@ function LoginScreen({navigation}) {
       <LoginButton title="LoginButton" size="sm" onPress={checkTextInput}></LoginButton>
       {/* <LoginButton title="LoginButton" size="sm" onPress={() => navigation.navigate('Home')}></LoginButton> */}
       {/* <ForgotPasswordButton title="ForgotPassword"></ForgotPasswordButton> */}
-      <Text style={styles.forgotPasswordText}>Forgot password?</Text>
+      <TouchableOpacity style={{marginTop: 16}}>
+        <Text style = {styles.forgotPasswordText}>Forgot password?</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
     marginBottom: 75,
   },
   textBox: {
+    backgroundColor: "#fff",
     fontSize: 16,
     width: "80%", 
     borderRadius: 30, 
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "#808080",
     alignSelf: "center",
-    marginTop: 16,
+    textDecorationLine: "underline",
   },
 });
 
