@@ -1,5 +1,6 @@
 var {firestore} = require("./config");
 var {timeConverter, time} = require("../time");
+const { convertTimestamp, convertTimestamps } = require("convert-firebase-timestamp");
 
 //TODO: Fix availability storage
 
@@ -95,6 +96,8 @@ async function inDatabase(user_type, fullName) {
     }
 }
 
+//inDatabase('trainer', 'Jane Doe');
+
 //shows entire collection in firebase(trainer, trainee, appointment)
 async function showCollection(user_type) {
     try {
@@ -135,24 +138,33 @@ async function showAppointments(appointment_collection) {
     }
 }
 
-async function showAvailability(user_type) {
+function convertDate(dateObject) {
+    return dateObject.toDate();
+
+}
+
+
+async function showAvailability(user_type, user_name) {
     try {
         const docRef = firestore.collection(user_type);
         const snapshot = await docRef.get();
         snapshot.forEach(async user => {
-            //process.stdout.write(user.id);
-            //process.stdout.write("=> ");
-            availabilityRef = docRef.doc(user.id).collection('availability').withConverter(timeConverter);
-            availabilitySnapshot =  await availabilityRef.get()
-            availabilitySnapshot.forEach(availability => {
-                console.log(availability.id, '=>', availability.data());
-            })
-          });
+            if (user.id == user_name) {
+                availabilityRef = docRef.doc(user.id).collection('availability').withConverter(timeConverter);
+                availabilitySnapshot =  await availabilityRef.get()
+                availabilitySnapshot.forEach(availability => {
+                    var formattedDate = availability.data().map(convertDate);
+                    console.log(availability.id, '=>', formattedDate);
+                })
+            }
+            });
     }
     catch (error) {
         console.log(error);
     };
 };
+
+showAvailability('trainee', "Jane Doe");
 
 async function showNamePlusDescription(user_type) {
     try {
@@ -180,7 +192,6 @@ async function showType(user_type) {
     }
 }
 
-showAvailability('trainee')
 //showCollection("trainee");
 //showAppointments("appointment");
 
