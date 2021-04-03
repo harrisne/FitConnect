@@ -1,4 +1,4 @@
-// //Use this to debug
+//Use this to debug
 // const firebase = require('firebase');
 
 

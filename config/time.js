@@ -1,3 +1,4 @@
+const { convertTimestamps } = require("convert-firebase-timestamp");
 class time {
     constructor(start,end) {
         start = start - 5;
@@ -34,7 +35,9 @@ var timeConverter = {
     },
     fromFirestore: function(snapshot, options){
         const data = snapshot.data(options);
-        return new time(data.start, data.end);
+        data.start = convertTimestamps(data.start);
+        data.end = convertTimestamps(data.end);
+        return data.start;
     }
 };
 
