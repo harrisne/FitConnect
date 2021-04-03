@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {MaterialCommunityIcons } from '@expo/vector-icons'
 import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
-import ProfileScreen from "../screens/TempProfileNavScreen";
+import SettingsScreen from "../screens/SettingsScreen";
 import SettingsNavigator from "../navigation/SettingsNavigator";
 import TrainerProfileScreen from "../screens/TrainerProfileScreen";
 
