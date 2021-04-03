@@ -23,9 +23,12 @@ function TrainerProfileScreen({navigation}) {
 
 
 function getAppointments() {
-  //showAppointments() from database?
+
   // first index of time object (Time object is 2nd index)
-  showCollection('appointment')[2];
+
+  // let c = showCollection('appointment');
+  // console.log(c);
+  
   return ['2021-04-02', '2021-04-04', '2021-04-05'];
 }
 
