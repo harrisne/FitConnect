@@ -141,6 +141,13 @@ class TrainerProfile extends Component {
               </View>
             </Modal> */}
           </SafeAreaView>
+          {/* <TempButton
+            title="EDIT PROFILE"
+            size="sm"
+            onPress={() => {this.props.navigation.navigate('TrainerTimesScreen')}}>
+          </TempButton> */}
+
+
           <VideoChatButton></VideoChatButton>
         </ScrollView>
       </SafeAreaView>
@@ -234,6 +241,12 @@ const MessageButton = ({ onPress }) => (
 const VideoChatButton = ({ onPress }) => (
   <TouchableOpacity onPress={onPress} style={styles.videoChatButtonContainer}>
     <Text style={styles.videoChatButtonText}>Start Video Chat</Text>
+  </TouchableOpacity>
+);
+
+const TempButton = ({ onPress }) => (
+  <TouchableOpacity onPress={onPress} style={styles.videoChatButtonContainer}>
+    <Text style={styles.videoChatButtonText}>Choose Time</Text>
   </TouchableOpacity>
 );
 
