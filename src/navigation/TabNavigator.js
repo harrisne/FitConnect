@@ -5,9 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {MaterialCommunityIcons } from '@expo/vector-icons'
 import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
-import SettingsScreen from "../screens/SettingsScreen";
-import SettingsNavigator from "../navigation/SettingsNavigator";
-import TrainerProfileScreen from "../screens/TrainerProfileScreen";
+import SearchNavigator from "./SearchNavigator";
+import SettingsNavigator from "./SettingsNavigator";
 
 
 function MessagesScreen() {
@@ -37,7 +36,7 @@ const TabNavigator = () => (
                 size = {size} color = {color}/>
             }}/>
         <Tab.Screen 
-            name="Search" component={SearchScreen} 
+            name="Search" component={SearchNavigator} 
             options={{
                 tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="account-search-outline" 
                 size = {size} color = {color}/>

@@ -1,4 +1,4 @@
-var {firestore} = require("./config");
+var {auth, firestore} = require("./config");
 var {timeConverter, time} = require("../time");
 
 //TODO: Fix availability storage
@@ -17,14 +17,30 @@ async function insertIntoTrainerDatabase(fullName, sex, age, height, weight) {
     } 
 }
 
-async function insertIntoTraineeDatabase(fullName, emailAddress, sex, age, height, weight) {
+async function insertIntoTraineeDatabase(fullName, sex, age, height, weight) {
     try {
-        await firestore.collection('traineeAuth')
-            .doc(firebase.auth().currentUser.uid)
-            .set({
+        await firestore.collection('trainee')
+            .doc(fullName).set({
             fullName : fullName,
             sex : sex,
+            age : age,
+            height: height,
+            weight: weight
+        })
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function insertIntoTraineeAuthDatabase(fullName, emailAddress, sex, age, height, weight) {
+    try {
+        await firestore.collection('traineeAuth')
+            .doc(auth.currentUser.uid)
+            .set({
+            fullName : fullName,
             emailAddress : emailAddress,
+            sex : sex,
             age : age,
             height: height,
             weight: weight

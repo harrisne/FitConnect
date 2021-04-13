@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput, TabBarIOSItem } from 'react-native';
-import {auth, firestore} from '../../config/firebase/config.js'
+import {auth, firestore} from '../../../config/firebase/config.js'
 
 class LoginScreen extends Component {
 

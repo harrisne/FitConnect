@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Pressable, Alert } from 'react-native'
-import {auth, firestore} from '../../config/firebase/config.js'
-import {insertIntoTraineeDatabase} from '../../config/firebase/database'
+import {auth, firestore} from '../../../config/firebase/database'
+import {insertIntoTraineeAuthDatabase} from '../../../config/firebase/database'
 
 
 class TraineeRegisterScreen extends Component {
@@ -20,16 +20,7 @@ class TraineeRegisterScreen extends Component {
 
       this.handleSignUp = this.handleSignUp.bind(this)
    }
-   // state = {
-   //    fullName: '',
-   //    emailAddress: '',
-   //    password: '',
-   //    passwordmatch: '',
-   //    sex: '',
-   //    age: '',
-   //    height: '',
-   //    weight: ''
-   // }
+
    fullName = (text)=> {
     this.setState({ fullName: text })
    }
@@ -56,10 +47,20 @@ class TraineeRegisterScreen extends Component {
    }
   
   handleSignUp(){
-      const { emailAddress, password, fullName, sex, age, height, weight } = this.state
+      const {fullName, emailAddress, password, sex, age, height, weight } = this.state
       auth.createUserWithEmailAndPassword(emailAddress, password)
          .then((result) => {
-            insertIntoTraineeDatabase(fullName,emailAddress,sex,age,height,weight)
+            //insertIntoTraineeAuthDatabase(fullName,emailAddress,sex,age,height,weight)
+            firestore.collection("traineeAuth")
+               .doc(auth.currentUser.uid)
+               .set({
+                  fullName,
+                  emailAddress, 
+                  sex,
+                  age,
+                  height,
+                  weight
+               })
             console.log(result)
             
          })
@@ -136,7 +137,8 @@ class TraineeRegisterScreen extends Component {
               onChangeText = {this.weight}/>  
 
          <TouchableOpacity style = {styles.createContainer}  
-            onPress = {() => {this.handleSignUp(); this.props.navigation.navigate('Login');}}>
+            onPress = {() => {this.handleSignUp(); }}>
+               {/* this.props.navigation.navigate('Login'); */}
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
 
