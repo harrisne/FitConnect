@@ -5,13 +5,15 @@ import AuthNavigator from "./src/navigation/AuthNavigator"
 import TabNavigator from "./src/navigation/TabNavigator"
 import {auth, firestore} from './config/firebase/config.js'
 import {View, Text} from 'react-native'
-import firebase from 'firebase'
 
-// import { Provider } from 'react-redux'
-// import { createStore, applyMiddleware } from 'redux'
-// import rootReducer from './redux/reducers'
-// import thunk from 'redux-thunk'
-// const store = createStore(rootReducer, applyMiddleware(thunk))
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import rootReducer from './redux/reducers'
+import thunk from 'redux-thunk'
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+//temp
+import MainScreen from './src/Main.js'
 
 export class App extends Component {
   constructor(props) {
@@ -38,7 +40,8 @@ export class App extends Component {
   }
 
   render () {
-    const {loggedIn, loaded} = this.state;
+    const {loggedIn, loaded} = this.state; 
+    //loading screen
     if(!loaded) {
       return (
         <View style={{flex: 1, justifyContent: 'center'}}>
@@ -47,19 +50,27 @@ export class App extends Component {
       )
     } 
 
-    if (!loggedIn) {
+    //if user is not logged in, go through authentication screens
+    if (!loggedIn) { 
       return (
         <NavigationContainer>
           <AuthNavigator />
-          {/* <TabNavigator/> */}
         </NavigationContainer>
       );
     }
 
-    return (
-      <NavigationContainer>
-        <TabNavigator/>
-      </NavigationContainer>
+    // else, if logged in and loaded, go to home screens which is handled in TabNavigator
+    return ( 
+      // <Provider store={store}>
+      //   <NavigationContainer>
+      //     <TabNavigator/>
+      //   </NavigationContainer>
+      // </Provider>
+
+      <Provider store={store}>
+        <MainScreen/>
+      </Provider>
+
     )
 
 
