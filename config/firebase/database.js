@@ -17,10 +17,14 @@ async function insertIntoTrainerDatabase(fullName, sex, age, height, weight) {
     } 
 }
 
-async function insertIntoTraineeDatabase(fullName, sex, age, height, weight) {
+async function insertIntoTraineeDatabase(fullName, emailAddress, sex, age, height, weight) {
     try {
-        await firestore.collection('trainee').doc(fullName).set({
-            sex: sex,
+        await firestore.collection('traineeAuth')
+            .doc(firebase.auth().currentUser.uid)
+            .set({
+            fullName : fullName,
+            sex : sex,
+            emailAddress : emailAddress,
             age : age,
             height: height,
             weight: weight

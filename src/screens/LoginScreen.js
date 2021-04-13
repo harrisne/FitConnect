@@ -1,15 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { Component } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput, TabBarIOSItem } from 'react-native';
+import {auth, firestore} from '../../config/firebase/config.js'
 
-function LoginScreen({navigation}) {
+class LoginScreen extends Component {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  constructor(props) {
+    super(props);
+    this.state = {
+       fullName: '',
+       emailAddress: '',
+       password: '',
+       passwordmatch: '',
+       sex: '',
+       age: '',
+       height: '',
+       weight: ''
+    }
 
-  // CHECKS FOR EMPTY TEXT INPUT
-  const checkTextInput = () => {
-    if (!email.trim()) {
+    this.handleLogin = this.handleLogin.bind(this)
+ }
+
+
+  checkTextInput = () => {
+    if (!emailAddress.trim()) {
       alert("Please enter a valid email address");
       console.log("no");
       return;
@@ -18,24 +32,44 @@ function LoginScreen({navigation}) {
       alert("Please enter a valid password");
       return;
     }
-    navigation.navigate('TabNavigator');
     //console.log({email}, {password});
   }
 
-  return (
-    <SafeAreaView>
-      <StatusBar style="auto" />
-      <Text style={styles.titleText}>Log In</Text>
-      <TextInput placeholder="Email Address" style={styles.textBox} onChangeText={(value) => setEmail(value)}/>
-      <TextInput placeholder="Password" secureTextEntry={true} style={styles.textBox} onChangeText={(value) => setPassword(value)}/>
-      <LoginButton title="LoginButton" size="sm" onPress={checkTextInput}></LoginButton>
-      {/* <LoginButton title="LoginButton" size="sm" onPress={() => navigation.navigate('Home')}></LoginButton> */}
-      {/* <ForgotPasswordButton title="ForgotPassword"></ForgotPasswordButton> */}
-      <TouchableOpacity style={{marginTop: 16}}>
-        <Text style = {styles.forgotPasswordText}>Forgot password?</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
-  );
+  handleLogin(){
+    const { emailAddress, password, fullName, sex, age, height, weight } = this.state
+    auth.signInWithEmailAndPassword(emailAddress, password)
+       .then((result) => {
+          insertIntoTraineeDatabase(fullName,emailAddress,sex,age,height,weight)
+          console.log(result)
+          
+       })
+       .catch((error) => {
+          console.log(error)
+       })
+  }
+
+  render() {
+    return (
+      <SafeAreaView>
+        <StatusBar style="auto" />
+        <Text style={styles.titleText}>Log In</Text>
+        <TextInput placeholder="Email Address" style={styles.textBox} onChangeText={(value) => setEmail(value)}/>
+        <TextInput placeholder="Password" secureTextEntry={true} style={styles.textBox} onChangeText={(value) => setPassword(value)}/>
+        <LoginButton 
+          title="LoginButton" size="sm" 
+          onPress={() => this.checkTextInput(), 
+            this.handleLogin(), 
+            this.props.navigation.navigate('TabNavigator')}
+
+        />
+        {/* <LoginButton title="LoginButton" size="sm" onPress={() => navigation.navigate('Home')}></LoginButton> */}
+        {/* <ForgotPasswordButton title="ForgotPassword"></ForgotPasswordButton> */}
+        <TouchableOpacity style={{marginTop: 16}}>
+          <Text style = {styles.forgotPasswordText}>Forgot password?</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

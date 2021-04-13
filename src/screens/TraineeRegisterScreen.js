@@ -4,17 +4,32 @@ import {auth, firestore} from '../../config/firebase/config.js'
 import {insertIntoTraineeDatabase} from '../../config/firebase/database'
 
 
-class Inputs extends Component {
-   state = {
-      fullName: '',
-      emailAddress: '',
-      password: '',
-      passwordmatch: '',
-      sex: '',
-      age: '',
-      height: '',
-      weight: ''
+class TraineeRegisterScreen extends Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         fullName: '',
+         emailAddress: '',
+         password: '',
+         passwordmatch: '',
+         sex: '',
+         age: '',
+         height: '',
+         weight: ''
+      }
+
+      this.handleSignUp = this.handleSignUp.bind(this)
    }
+   // state = {
+   //    fullName: '',
+   //    emailAddress: '',
+   //    password: '',
+   //    passwordmatch: '',
+   //    sex: '',
+   //    age: '',
+   //    height: '',
+   //    weight: ''
+   // }
    fullName = (text)=> {
     this.setState({ fullName: text })
    }
@@ -42,11 +57,15 @@ class Inputs extends Component {
   
   handleSignUp(){
       const { emailAddress, password, fullName, sex, age, height, weight } = this.state
-      auth.createUserWithEmailAndPassword(emailAddress, password).then(() => {
-            insertIntoTraineeDatabase(fullName,sex,age,height,weight)
-            // this.props.navigation.navigate('HomeScreen')
+      auth.createUserWithEmailAndPassword(emailAddress, password)
+         .then((result) => {
+            insertIntoTraineeDatabase(fullName,emailAddress,sex,age,height,weight)
+            console.log(result)
+            
          })
-         .catch(error => console.log(error))
+         .catch((error) => {
+            console.log(error)
+         })
   }
 
    render() {
@@ -126,7 +145,7 @@ class Inputs extends Component {
    }
 }
 
-export default Inputs
+export default TraineeRegisterScreen
 
 const styles = StyleSheet.create({
    container: {
