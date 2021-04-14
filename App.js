@@ -44,7 +44,7 @@ export class App extends Component {
     //loading screen
     if(!loaded) {
       return (
-        <View style={{flex: 1, justifyContent: 'center'}}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text>Loading</Text>
         </View>
       )
@@ -59,13 +59,8 @@ export class App extends Component {
       );
     }
 
-    // else, if logged in and loaded, go to home screens which is handled in TabNavigator
+    // else, if logged in and loaded, go to home screens which is handled in Main.js
     return ( 
-      // <Provider store={store}>
-      //   <NavigationContainer>
-      //     <TabNavigator/>
-      //   </NavigationContainer>
-      // </Provider>
 
       <Provider store={store}>
         <MainScreen/>

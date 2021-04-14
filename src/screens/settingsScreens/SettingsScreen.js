@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput } from 'react-native';
-import route from "../navigation/routes";
 
-
-//THIS IS A TEMP PLACEHOLDER PAGE TO BE REPLACED BY THE MESSAGES / VIDEO CHAT PAGE
-function TempProfileNavScreen({navigation}) {
+//settings page
+function SettingsScreen({navigation}) {
   return (
     <SafeAreaView>
         <StatusBar style="auto" />
@@ -78,4 +76,4 @@ const SignUpButton = ({ onPress, title }) => (
   );
 
 
-export default TempProfileNavScreen;
+export default SettingsScreen;

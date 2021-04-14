@@ -39,7 +39,7 @@ class LoginScreen extends Component {
     const { emailAddress, password, fullName, sex, age, height, weight } = this.state
     auth.signInWithEmailAndPassword(emailAddress, password)
        .then((result) => {
-          insertIntoTraineeDatabase(fullName,emailAddress,sex,age,height,weight)
+          //insertIntoTraineeDatabase(fullName,emailAddress,sex,age,height,weight)
           console.log(result)
           
        })
