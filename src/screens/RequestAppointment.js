@@ -32,6 +32,13 @@ export default function RequestAppointment({navigation}) {
     
         console.log(`${makeTwoDigits(hours)}:${makeTwoDigits(minutes)}:${makeTwoDigits(seconds)}`)
     }
+
+    function convertSingleDigitToDateTime(time) {
+        let date = new Date();
+        date.setHours(time);
+        date.setMinutes(0);
+        return date;
+    }
    
      
     return (
@@ -41,13 +48,13 @@ export default function RequestAppointment({navigation}) {
             <TextInput
                 label="Start time"
                 value={startTime}
-                onChangeText={startTime => setStartTime(startTime)}
+                onChangeText={startTime => setStartTime(convertSingleDigitToDateTime(startTime))}
                 mode="flat"
             />
             <TextInput
                 label="End time"
                 value={endTime}
-                onChangeText={endTime => setEndTime(endTime)}
+                onChangeText={endTime => setEndTime(convertSingleDigitToDateTime(endTime))}
                 mode="flat"
             />
 

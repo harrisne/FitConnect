@@ -36,7 +36,7 @@ class LoginScreen extends Component {
   }
 
   handleLogin(){
-    const { emailAddress, password, fullName, sex, age, height, weight } = this.state
+    const { emailAddress, password } = this.state
     auth.signInWithEmailAndPassword(emailAddress, password)
        .then((result) => {
           //insertIntoTraineeDatabase(fullName,emailAddress,sex,age,height,weight)
@@ -53,17 +53,16 @@ class LoginScreen extends Component {
       <SafeAreaView>
         <StatusBar style="auto" />
         <Text style={styles.titleText}>Log In</Text>
-        <TextInput placeholder="Email Address" style={styles.textBox} onChangeText={(value) => setEmail(value)}/>
-        <TextInput placeholder="Password" secureTextEntry={true} style={styles.textBox} onChangeText={(value) => setPassword(value)}/>
+        <TextInput placeholder="Email Address" style={styles.textBox} onChangeText={(emailAddress) => this.setState({ emailAddress })}/>
+        <TextInput placeholder="Password" secureTextEntry={true} style={styles.textBox} onChangeText={(password) => this.setState({ password })}/>
         <LoginButton 
           title="LoginButton" size="sm" 
           onPress={() => this.checkTextInput(), 
-            this.handleLogin(), 
+            this.handleLogin(),
             this.props.navigation.navigate('TabNavigator')}
 
         />
-        {/* <LoginButton title="LoginButton" size="sm" onPress={() => navigation.navigate('Home')}></LoginButton> */}
-        {/* <ForgotPasswordButton title="ForgotPassword"></ForgotPasswordButton> */}
+
         <TouchableOpacity style={{marginTop: 16}}>
           <Text style = {styles.forgotPasswordText}>Forgot password?</Text>
         </TouchableOpacity>

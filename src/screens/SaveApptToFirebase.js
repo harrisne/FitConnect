@@ -68,8 +68,8 @@ export default function SaveAppToFirebase(props, {navigation}) {
         <View style = {{flex: 1}}>
             {/* <Title>Confirm Appointment</Title> */}
             <Text> {trainerName} is the current trainer</Text>
-            <Text> {startTime} is the start time</Text>
-            <Text> {endTime} is the end time</Text>
+            <Text> {startTime.toString()} is the start time</Text>
+            <Text> {endTime.toString()} is the end time</Text>
             <TextInput
                 placeholder="Add appointment details . . ."
                 onChangeText = {(details) => setDetails(details)}

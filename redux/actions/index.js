@@ -1,7 +1,12 @@
-import { USER_STATE_CHANGE, USER_APPOINTMENT_STATE_CHANGE } from '../constants/index'
+import { USER_STATE_CHANGE, USER_APPOINTMENT_STATE_CHANGE, CLEAR_DATA } from '../constants/index'
 import firebase from 'firebase'
 import {auth, firestore} from '../../config/firebase/config'
 
+export function clearData () {
+    return ((dispatch) =>  {
+        dispatch({type: CLEAR_DATA})
+    }) 
+}
 export function fetchUser() {
     return((dispatch) => {
         firestore.collection("traineeAuth")

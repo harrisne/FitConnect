@@ -4,7 +4,7 @@ import {View, Text} from 'react-native'
 import { connect } from 'react-redux'
 import { matchPath } from 'react-router'
 import { bindActionCreators } from 'redux'
-import { fetchUser, fetchUserAppointments } from '../redux/actions/index'
+import { fetchUser, fetchUserAppointments, clearData } from '../redux/actions/index'
 
 import { NavigationContainer } from '@react-navigation/native'
 import TabNavigator from './navigation/TabNavigator'
@@ -12,6 +12,7 @@ import TabNavigator from './navigation/TabNavigator'
 
 export class Main extends Component {
     componentDidMount() {
+        this.props.clearData();
         this.props.fetchUser();
         this.props.fetchUserAppointments();
         
@@ -40,6 +41,6 @@ export class Main extends Component {
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser
 });
-const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserAppointments}, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserAppointments, clearData}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchProps)(Main);

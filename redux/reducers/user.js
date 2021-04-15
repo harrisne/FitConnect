@@ -1,4 +1,4 @@
-import { USER_STATE_CHANGE, USER_APPOINTMENT_STATE_CHANGE } from "../constants/index"
+import { USER_STATE_CHANGE, USER_APPOINTMENT_STATE_CHANGE, CLEAR_DATA } from "../constants/index"
 
 const initialState = {
     currentUser: null,
@@ -16,6 +16,10 @@ export const user = (state = initialState, action) => {
             return {
                 ...state,
                 appointments: action.appointments
+            }
+        case CLEAR_DATA:
+            return {
+                initialState
             }
         default: 
             return state;

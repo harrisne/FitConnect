@@ -14,7 +14,7 @@ const SettingsNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }}/>
     <Stack.Screen name="MyAccountTrainer" component={MyAccountTrainer} />
-    <Stack.Screen name="Availability" component={AvailabilityScreen} />
+    <Stack.Screen name="AvailabilityScreen" component={AvailabilityScreen} />
     <Stack.Screen name="Testing" component={Testing} /> 
     <Stack.Screen name="My Appointments" component={userAppointments} />
     <Stack.Screen name="RequestAppointment" component={RequestAppointment} />

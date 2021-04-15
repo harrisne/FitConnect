@@ -1,23 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput } from 'react-native';
+import { auth } from '../../../config/firebase/config';
 
 //settings page
 function SettingsScreen({navigation}) {
+
+  const onLogout = () => {
+    auth.signOut();
+  }
+
   return (
     <SafeAreaView>
         <StatusBar style="auto" />
         <Text style={styles.titleText}>Settings</Text>
         <Button
-            title= "View Appointment Insert test page"
+            title= "Book appointment testing"
             onPress={() => navigation.navigate('RequestAppointment')}>
         </Button>
         <Button
-            title="User's current appointments test page"
+            title="User's current appointments page"
             size="sm"
             onPress={() => navigation.navigate('My Appointments')}>
-
         </Button>
+        <Button
+            title="Time input example (temp)"
+            size="sm"
+            onPress={() => navigation.navigate('Testing')}>
+        </Button>
+
+
         <Text style={styles.subtitleText}> Trainer Pages (testing) </Text>
         <Button
             title="Edit Trainer Profile"
@@ -31,7 +43,13 @@ function SettingsScreen({navigation}) {
 
         </Button>
 
+        <Text style={styles.subtitleText}> </Text>
+        <Button
+            title="Logout"
+            size="sm"
+            onPress={() => onLogout()}>
 
+        </Button>
         {/* <SignUpButton
             title="EDIT PROFILE"
             size="sm"
