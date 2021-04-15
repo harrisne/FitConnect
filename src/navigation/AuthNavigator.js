@@ -1,13 +1,11 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import LoginScreen from "../screens/LoginScreen";
-import TraineeRegisterScreen from "../screens/TraineeRegisterScreen";
-import TrainerRegisterScreen from "../screens/TrainerRegisterScreen";
-import WelcomeScreen from "../screens/WelcomeScreen"
-import WhoAreYouScreen from "../screens/WhoAreYouScreen"
-import TabNavigator from "./TabNavigator";
-import TrainerProfileScreen from "../screens/TrainerProfileScreen";
-import TrainerTimesScreen from "../screens/TrainerTimesScreen";
+import LoginScreen from "../screens/authScreens/LoginScreen";
+import TraineeRegisterScreen from "../screens/authScreens/TraineeRegisterScreen";
+import TrainerRegisterScreen from "../screens/authScreens/TrainerRegisterScreen";
+import WelcomeScreen from "../screens/authScreens/WelcomeScreen"
+import WhoAreYouScreen from "../screens/authScreens/WhoAreYouScreen"
+
 
 const Stack = createStackNavigator();
 
@@ -19,9 +17,7 @@ const AuthNavigator = () => (
     <Stack.Screen name="WhoAreYou" component={WhoAreYouScreen} />
     <Stack.Screen name="TraineeRegister" component={TraineeRegisterScreen} />
     <Stack.Screen name="TrainerRegister" component={TrainerRegisterScreen} />
-    <Stack.Screen name="TrainerProfile" component={TrainerProfileScreen} options={{ headerShown: false }}/>
-    <Stack.Screen name="TrainerTimesScreen" component={TrainerTimesScreen} />
-    <Stack.Screen name="TabNavigator" component={TabNavigator} options={{ headerShown: false }}/>
+    {/* <Stack.Screen name="TabNavigator" component={TabNavigator} options={{ headerShown: false }}/> */}
     
   </Stack.Navigator>
 );

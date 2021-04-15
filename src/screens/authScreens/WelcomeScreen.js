@@ -1,14 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput, Image } from 'react-native';
-import route from "../navigation/routes";
 
 function WelcomeScreen({navigation}) {
   return (
     <SafeAreaView>
         <StatusBar style="auto" />
         <Text style={styles.titleText}>Welcome to FitConnect</Text>
-        <Image source={require("../assets/logo.png")} style={{width: 100, height: 100, borderRadius: 30, resizeMode: "contain", marginTop: 0, marginBottom: 30, alignSelf: 'center'}}/>
+        <Image source={require("../../assets/logo.png")} style={{width: 100, height: 100, borderRadius: 30, resizeMode: "contain", marginTop: 0, marginBottom: 30, alignSelf: 'center'}}/>
         {/* <Text style={styles.titleText}>Log In</Text> */}
         <Text style={styles.forgotPasswordText}>Sign in with existing account</Text>
         <LoginButton 

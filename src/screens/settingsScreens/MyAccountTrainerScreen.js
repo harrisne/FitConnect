@@ -1,9 +1,9 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import firebase from 'firebase';
-import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import {insertIntoTrainerDatabase, addTrainerRate, addTrainerDescription} from '../../../config/firebase/database';
 
-
-function MyAccountUserScreen({navigation}) {
+function MyAccountTrainerScreen({navigation}) {
   let state = {
     fullName: 'Jannis Doer',
     emailAddress: 'janis11@gmail.com',
@@ -12,7 +12,17 @@ function MyAccountUserScreen({navigation}) {
     height: '5\'2"',
     weight: '130',
     rate: 'Edit Rate',
-    description: 'Edit Description'
+    description: 'Edit description'
+  }
+
+  const DescriptionTextInput  = (props) => {
+    return (
+      <TextInput
+        {...props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
+        editable
+        maxLength={3}
+      />
+    );
   }
 
   const [nameValue, onNameText] = React.useState(state.fullName);
@@ -21,14 +31,14 @@ function MyAccountUserScreen({navigation}) {
   const [sexValue, onSexText] = React.useState(state.sex);
   const [weightValue, onWeightText] = React.useState(state.weight);
   const [heightValue, onHeightText] = React.useState(state.height);
-  const [descriptionValue, onChangeDescriptionText] = React.useState('Edit Profile Description');
+  const [rateValue, onChangeRateText] = React.useState(state.rate);
+  const [descriptionValue, onChangeDescriptionText] = React.useState(state.description);
 
   function handleSignUp() {    
     insertIntoTrainerDatabase(nameValue, sexValue, ageValue, heightValue, weightValue);
     addTrainerRate(nameValue, rateValue);
     addTrainerDescription(nameValue, descriptionValue)
   }
-
 
   return (
     
@@ -39,12 +49,27 @@ function MyAccountUserScreen({navigation}) {
               <Text style = {styles.text}> Edit Account Information (Trainer) </Text>
             </View>
             <Text style={styles.bodyText}>Full Name: </Text>
-            <TextInput style = {styles.input}
-                           
+            <TextInput style = {styles.input}        
               value={nameValue}
-              onChangeText={text => onNameText(text)}
+              onChangeText={text => onNameText(text)}  />
 
-             />
+            <Text style={styles.bodyText}>Profile Descritption: </Text>
+            <TextInput style = {{    margin: 16,
+                height: 44,
+                borderWidth: 0.7,
+                borderRadius: 13,
+                borderColor: "black",
+                fontSize: 16,
+                multiline: true}}
+              onChangeText={text => onChangeDescriptionText(text)}
+              value = {descriptionValue}/>
+
+            <Text style={styles.bodyText}>Rate: (ex. $20/hr)</Text>
+            <TextInput style={styles.input}
+              onChangeText={text => onChangeRateText(text)}
+              value={rateValue}
+            />
+              
             <Text style={styles.bodyText}>Email Address: </Text>
            <TextInput style = {styles.input}
               onChangeText={text => onEmailText(text)}
@@ -71,16 +96,19 @@ function MyAccountUserScreen({navigation}) {
               onChangeText={text => onWeightText(text)}
               />  
 
-        <Text style={styles.bodyText}>Profile Descritption: </Text>
-        <TextInput style = {styles.input}
-              onChangeText={text => onChangeDescriptionText(text)}
-              value = {descriptionValue}/>
+      <AddAvailabilitesButton
+            size="sm"
+            style={styles.loginButtonText}
+            onPress={
+              () => { handleSignUp(); navigation.navigate('Availability');}
+             }>
+      </AddAvailabilitesButton>
 
       <DoneButton
             size="sm"
             style={styles.loginButtonText}
             onPress={
-              () => { handleSignUp(); navigation.navigate('WhoAreYou');}
+              () => { handleSignUp(); navigation.navigate('Settings');}
              }>
       </DoneButton>
 
@@ -88,7 +116,6 @@ function MyAccountUserScreen({navigation}) {
     
   );
 }
-
 
 const styles = StyleSheet.create({
   input: {
@@ -154,6 +181,12 @@ const styles = StyleSheet.create({
 });
 
 
+const AddAvailabilitesButton = ({ onPress, title }) => (
+    <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>
+      <Text style={styles.loginButtonText}>Edit Availabilites</Text>
+    </TouchableOpacity>
+  );
+
   const DoneButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={{
       elevation: 8,
@@ -167,4 +200,4 @@ const styles = StyleSheet.create({
   );
 
 
-export default MyAccountUserScreen;
+export default MyAccountTrainerScreen;

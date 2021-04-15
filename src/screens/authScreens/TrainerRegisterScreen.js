@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, Button, TextInput, StyleSheet, Pressable, Alert, TouchableOpacity, ScrollView } from 'react-native'
-import {auth} from '../../config/firebase/config.js'
-import {insertIntoTrainerDatabase} from '../../config/firebase/database'
+import {auth} from '../../../config/firebase/database'
+import {insertIntoTrainerDatabase} from '../../../config/firebase/database'
 
 class Inputs extends Component {
    state = {

@@ -82,7 +82,7 @@ class TrainerProfile extends Component {
     this.setState({calendarDays: markedEvents});
   };
   pressBackButton = () => {
-    this.props.nav.navigate('Search');
+    this.props.nav.navigate("SearchScreen");
   }
   render() {
     return (

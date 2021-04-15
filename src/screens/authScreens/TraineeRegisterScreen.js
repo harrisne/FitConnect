@@ -1,20 +1,26 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Pressable, Alert } from 'react-native'
-import {auth, firestore} from '../../config/firebase/config.js'
-import {insertIntoTraineeDatabase} from '../../config/firebase/database'
+import {auth, firestore} from '../../../config/firebase/database'
+import {insertIntoTraineeAuthDatabase} from '../../../config/firebase/database'
 
 
-class Inputs extends Component {
-   state = {
-      fullName: '',
-      emailAddress: '',
-      password: '',
-      passwordmatch: '',
-      sex: '',
-      age: '',
-      height: '',
-      weight: ''
+class TraineeRegisterScreen extends Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         fullName: '',
+         emailAddress: '',
+         password: '',
+         passwordmatch: '',
+         sex: '',
+         age: '',
+         height: '',
+         weight: ''
+      }
+
+      this.handleSignUp = this.handleSignUp.bind(this)
    }
+
    fullName = (text)=> {
     this.setState({ fullName: text })
    }
@@ -41,12 +47,26 @@ class Inputs extends Component {
    }
   
   handleSignUp(){
-      const { emailAddress, password, fullName, sex, age, height, weight } = this.state
-      auth.createUserWithEmailAndPassword(emailAddress, password).then(() => {
-            insertIntoTraineeDatabase(fullName,sex,age,height,weight)
-            // this.props.navigation.navigate('HomeScreen')
+      const {fullName, emailAddress, password, sex, age, height, weight } = this.state
+      auth.createUserWithEmailAndPassword(emailAddress, password)
+         .then((result) => {
+            //insertIntoTraineeAuthDatabase(fullName,emailAddress,sex,age,height,weight)
+            firestore.collection("traineeAuth")
+               .doc(auth.currentUser.uid)
+               .set({
+                  fullName,
+                  emailAddress, 
+                  sex,
+                  age,
+                  height,
+                  weight
+               })
+            console.log(result)
+            
          })
-         .catch(error => console.log(error))
+         .catch((error) => {
+            console.log(error)
+         })
   }
 
    render() {
@@ -117,7 +137,8 @@ class Inputs extends Component {
               onChangeText = {this.weight}/>  
 
          <TouchableOpacity style = {styles.createContainer}  
-            onPress = {() => {this.handleSignUp(); this.props.navigation.navigate('Login');}}>
+            onPress = {() => {this.handleSignUp(); }}>
+               {/* this.props.navigation.navigate('Login'); */}
             <Text style = {styles.createButtonText}> Create </Text>
           </TouchableOpacity>
 
@@ -126,7 +147,7 @@ class Inputs extends Component {
    }
 }
 
-export default Inputs
+export default TraineeRegisterScreen
 
 const styles = StyleSheet.create({
    container: {

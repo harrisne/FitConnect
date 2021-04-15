@@ -1,20 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, TextInput } from 'react-native';
-import route from "../navigation/routes";
 
-
-//THIS IS A TEMP PLACEHOLDER PAGE TO BE REPLACED BY THE MESSAGES / VIDEO CHAT PAGE
-function TempProfileNavScreen({navigation}) {
+function WelcomeScreen({navigation}) {
   return (
     <SafeAreaView>
         <StatusBar style="auto" />
-        <Text style={styles.titleText}>My Profile</Text>
-
-        <SignUpButton
-            title="EDIT PROFILE"
+        <Text style={styles.titleText}>Who Are You?</Text>
+        {/* <Text style={styles.titleText}>Log In</Text> */}
+        
+        <LoginButton 
+            title="Trainee"
             size="sm"
-            onPress={() => navigation.navigate('MyAccountTrainer')}>
+            onPress={() => navigation.navigate('TraineeRegister')}>
+        </LoginButton>
+        {/* &nbsp;&nbsp;&nbsp; */}
+        <SignUpButton
+            title="Trainer"
+            size="sm"
+            onPress={() => navigation.navigate('TrainerRegister')}>
         </SignUpButton>
 
       {/* <ForgotPasswordButton title="ForgotPassword"></ForgotPasswordButton> */}
@@ -28,6 +32,7 @@ const styles = StyleSheet.create({
     color: "#ff1c99",
     fontWeight: "bold",
     alignSelf: "center",
+    //textTransform: "uppercase",
     marginTop: 200,
     marginBottom: 75,
   },
@@ -55,6 +60,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     alignSelf: "center",
+    textTransform: "uppercase",
   },
   forgotPasswordText: {
     fontSize: 15,
@@ -67,15 +73,15 @@ const styles = StyleSheet.create({
 
 const LoginButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>
-      <Text style={styles.loginButtonText}>My Messages</Text>
+      <Text style={styles.loginButtonText}>I am a trainee</Text>
     </TouchableOpacity>
   );
 
 const SignUpButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>
-      <Text style={styles.loginButtonText}>Edit Profile Info</Text>
+      <Text style={styles.loginButtonText}>I am a trainer</Text>
     </TouchableOpacity>
   );
 
 
-export default TempProfileNavScreen;
+export default WelcomeScreen;
