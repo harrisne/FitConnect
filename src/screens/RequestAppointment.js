@@ -14,6 +14,25 @@ export default function RequestAppointment({navigation}) {
     //     const johnBrownUID = OHyZuePg1dhIjFOiOiyw;
     //     setAppointment(johnBrownUID);
     // }
+
+    const dateformat = () => {
+        let date = new Date();
+
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        console.log(`${hours}:${minutes}:${seconds}`)
+    
+        // how to handle the cases where time is one digit
+        function makeTwoDigits (time) {
+            const timeString = `${time}`;
+            if (timeString.length === 2) return time
+            return `0${time}`
+        }
+    
+        console.log(`${makeTwoDigits(hours)}:${makeTwoDigits(minutes)}:${makeTwoDigits(seconds)}`)
+    }
+   
      
     return (
         <View>

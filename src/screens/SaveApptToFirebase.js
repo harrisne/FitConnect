@@ -14,12 +14,10 @@ export default function SaveAppToFirebase(props, {navigation}) {
     const endTime = props.route.params.endTime;
     const trainerUID = props.route.params.trainerUID;
     const userUID = firebase.auth().currentUser.uid;
-    const trainerName = "John Brown";
+    const trainerName = "John Brown"; //
     
-
     const childPath = `userAppts/${trainerUID}/${Math.random().toString(36)}`;
-    console.log(childPath)
-
+ 
     const uploadImage = async () => {
         const response = await fetch(trainerUID);
         const blob = await response.blob();
@@ -36,13 +34,13 @@ export default function SaveAppToFirebase(props, {navigation}) {
 
         const taskCompleted = () => {
             task.snapshot.ref.getDownloadURL().then((snapshot) => {
-                saveApptData(snapshot);
+                //saveApptData(snapshot);
                 //console.log(snapshot)
             })
         }
 
         const taskError = snapshot => {
-            console.log(snapshot)
+            //console.log(snapshot)
         }
 
         task.on("state_changed", taskProgress, taskError, taskCompleted)
@@ -54,7 +52,7 @@ export default function SaveAppToFirebase(props, {navigation}) {
             .doc(auth.currentUser.uid)
             .collection('userAppointments')
             .add({
-                trainer: trainerUID,
+                trainerUID: trainerUID,
                 trainerName: trainerName,
                 details: details,
                 startTime: startTime,

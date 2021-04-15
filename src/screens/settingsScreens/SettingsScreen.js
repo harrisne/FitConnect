@@ -7,15 +7,37 @@ function SettingsScreen({navigation}) {
   return (
     <SafeAreaView>
         <StatusBar style="auto" />
-        <Text style={styles.titleText}>My Profile</Text>
+        <Text style={styles.titleText}>Settings</Text>
+        <Button
+            title= "View Appointment Insert test page"
+            onPress={() => navigation.navigate('RequestAppointment')}>
+        </Button>
+        <Button
+            title="User's current appointments test page"
+            size="sm"
+            onPress={() => navigation.navigate('My Appointments')}>
 
-        <SignUpButton
+        </Button>
+        <Text style={styles.subtitleText}> Trainer Pages (testing) </Text>
+        <Button
+            title="Edit Trainer Profile"
+            size="sm"
+            onPress={() => navigation.navigate('MyAccountTrainer')}>
+        </Button>
+        <Button
+            title="Set Trainer's availabilities"
+            size="sm"
+            onPress={() => navigation.navigate('AvailabilityScreen')}>
+
+        </Button>
+
+
+        {/* <SignUpButton
             title="EDIT PROFILE"
             size="sm"
             onPress={() => navigation.navigate('MyAccountTrainer')}>
-        </SignUpButton>
+        </SignUpButton> */}
 
-      {/* <ForgotPasswordButton title="ForgotPassword"></ForgotPasswordButton> */}
     </SafeAreaView>
   );
 }
@@ -23,11 +45,19 @@ function SettingsScreen({navigation}) {
 const styles = StyleSheet.create({
   titleText: {
     fontSize: 30,
-    color: "#ff1c99",
-    fontWeight: "bold",
+    //color: "#ff1c99",
+    //fontWeight: "bold",
     alignSelf: "center",
-    marginTop: 200,
-    marginBottom: 75,
+    marginTop: 110,
+    marginBottom: 70,
+  },
+  subtitleText: {
+    fontSize: 20,
+    //color: "#ff1c99",
+    //fontWeight: "bold",
+    alignSelf: "center",
+    marginTop: 30,
+    marginBottom: 20,
   },
   textBox: {
     fontSize: 16,
@@ -62,12 +92,6 @@ const styles = StyleSheet.create({
   }
 });
 
-
-const LoginButton = ({ onPress, title }) => (
-    <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>
-      <Text style={styles.loginButtonText}>My Messages</Text>
-    </TouchableOpacity>
-  );
 
 const SignUpButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>

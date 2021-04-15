@@ -13,9 +13,9 @@ const HomeNavigator = () => (
   <Stack.Navigator>
     {/* <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }}/> */}
     {/* <Stack.Screen name="Testing" component={Testing} /> */}
-    {/* <Stack.Screen name="userAppointments" component={userAppointments} /> */}
+    <Stack.Screen name="My Appointments" component={userAppointments} />
     <Stack.Screen name="RequestAppointment" component={RequestAppointment} />
-    <Stack.Screen name="SaveApptToFirebase" component={SaveApptToFirebase} />
+    <Stack.Screen name="SaveApptToFirebase" component={SaveApptToFirebase} /> 
     
   </Stack.Navigator>
 );

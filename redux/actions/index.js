@@ -31,7 +31,7 @@ export function fetchUserAppointments() {
                     return { id, ...data }
                 })
                 //console.log(snapshot.docs)
-                console.log(appointments)
+                console.log("Appointments: " + appointments)
                 dispatch({type : USER_APPOINTMENT_STATE_CHANGE, appointments});
             })
     })

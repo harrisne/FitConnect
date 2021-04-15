@@ -164,9 +164,10 @@ async function showAvailability(user_type) {
             //process.stdout.write("=> ");
             availabilityRef = docRef.doc(user.id).collection('availability').withConverter(timeConverter);
             availabilitySnapshot =  await availabilityRef.get()
-            availabilitySnapshot.forEach(availability => {
-                console.log(availability.id, '=>', availability.data());
-            })
+            //kf
+            // availabilitySnapshot.forEach(availability => {
+            //     console.log(availability.id, '=>', availability.data());
+            // })
           });
     }
     catch (error) {

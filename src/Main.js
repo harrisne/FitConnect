@@ -18,8 +18,7 @@ export class Main extends Component {
     }
     render() {
         const { currentUser } = this.props
-        console.log(this.props);
-        console.log(currentUser)
+
         if (currentUser == undefined) {
             return (
                 <View style = {{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -28,10 +27,7 @@ export class Main extends Component {
             )
         } else {
             return (
-                // <View>
-                //     <Text>{currentUser.fullName} is logged in</Text>
-                // </View>
-    
+                //if the user is logged in,
                 <NavigationContainer>
                     <TabNavigator/>
                 </NavigationContainer>
