@@ -12,7 +12,6 @@ import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-//temp
 import MainScreen from './src/Main.js'
 
 export class App extends Component {
@@ -61,27 +60,13 @@ export class App extends Component {
 
     // else, if logged in and loaded, go to home screens which is handled in Main.js
     return ( 
-
       <Provider store={store}>
         <MainScreen/>
       </Provider>
 
     )
-
-
   }
 }
 
 export default App;
 
-//old App.js
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <AuthNavigator />
-//       {/* <TabNavigator/> */}
-//     </NavigationContainer>
-//   );
-// }
-
-// export default App;

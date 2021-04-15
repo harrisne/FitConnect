@@ -2,6 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, Button, TouchableOpacity, Dimensions } from 'react-native';
 
+/* Home: landing screen after user logs in 
+* contains the user's current appointments
+*/
 function showCurrentDate() {
   var date = new Date().getDate();
   return date;

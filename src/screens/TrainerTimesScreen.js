@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Alert } from 'react-native'
 
+/* 
+* Trainer Time: this page is connected to the trainer profile page. It displays when the current
+* trainer might be available.
+*/
 class Inputs extends Component {
    state = {
       
