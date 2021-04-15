@@ -3,7 +3,7 @@ JIE 0319 Spring 2021
 
 Team members: Allen Averbukh, Nicole Harris, Princeton Henry, and William Sheppard
 
-Front end: React Native
+Front end: React Native, Redux
 
 Back end: Firebase
 
