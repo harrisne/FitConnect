@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView, Pressable, Alert } from 'react-native'
-import {auth, firestore} from '../../../config/firebase/database'
+import {auth, firestore} from '../../../config/firebase/config'
 import {insertIntoTraineeAuthDatabase} from '../../../config/firebase/database'
 
 
@@ -47,7 +47,7 @@ class TraineeRegisterScreen extends Component {
    }
   
   handleSignUp(){
-      const {fullName, emailAddress, password, sex, age, height, weight } = this.state
+      const {fullName, emailAddress, password, sex, age,} = this.state
       auth.createUserWithEmailAndPassword(emailAddress, password)
          .then((result) => {
             //insertIntoTraineeAuthDatabase(fullName,emailAddress,sex,age,height,weight)
@@ -57,9 +57,7 @@ class TraineeRegisterScreen extends Component {
                   fullName,
                   emailAddress, 
                   sex,
-                  age,
-                  height,
-                  weight
+                  age
                })
             console.log(result)
             
@@ -122,7 +120,7 @@ class TraineeRegisterScreen extends Component {
               autoCapitalize = "none"
               onChangeText = {this.age}/>  
           
-          <TextInput style = {styles.input}
+          {/* <TextInput style = {styles.input}
 
               placeholder = "Height (e.g. feet'inches)"
               placeholderTextColor = "#a9a9a9"
@@ -134,7 +132,7 @@ class TraineeRegisterScreen extends Component {
               placeholder = "Weight in pounds (e.g. 160)"
               placeholderTextColor = "#a9a9a9"
               autoCapitalize = "none"
-              onChangeText = {this.weight}/>  
+              onChangeText = {this.weight}/>   */}
 
          <TouchableOpacity style = {styles.createContainer}  
             onPress = {() => {this.handleSignUp(); }}>

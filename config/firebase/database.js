@@ -33,7 +33,7 @@ async function insertIntoTraineeDatabase(fullName, sex, age, height, weight) {
     }
 }
 
-async function insertIntoTraineeAuthDatabase(fullName, emailAddress, sex, age, height, weight) {
+async function insertIntoTraineeAuthDatabase(fullName, emailAddress, sex, age) {
     try {
         await firestore.collection('traineeAuth')
             .doc(auth.currentUser.uid)
@@ -42,8 +42,6 @@ async function insertIntoTraineeAuthDatabase(fullName, emailAddress, sex, age, h
             emailAddress : emailAddress,
             sex : sex,
             age : age,
-            height: height,
-            weight: weight
         })
     }
     catch (error) {
