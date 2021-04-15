@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import RequestAppointment from "../screens/RequestAppointment";
 import SaveApptToFirebase from "../screens/SaveApptToFirebase";
-import Testing from "../screens/Testing";
+import Testing from "../screens/settingsScreens/databaseTesting/Testing";
 import userAppointments from "../screens/userAppointments";
 
 const Stack = createStackNavigator();

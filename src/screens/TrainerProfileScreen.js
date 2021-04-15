@@ -5,7 +5,9 @@ import { Calendar, CalendarList } from 'react-native-calendars';
 
 import {showAppointments, showCollection} from '../../config/firebase/database';
 
-
+/* Trainer Profile Screen: Display's an individual trainer's information including their name, description, 
+* availabilities, and rate
+*/
 function TrainerProfileScreen({navigation}) {
   // const pressBackButton = () => {
   //   navigation.navigate('Search');
