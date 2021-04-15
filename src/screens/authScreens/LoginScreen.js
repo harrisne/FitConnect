@@ -55,7 +55,7 @@ class LoginScreen extends Component {
         <Text style={styles.titleText}>Log In</Text>
         <TextInput placeholder="Email Address" style={styles.textBox} onChangeText={(emailAddress) => this.setState({ emailAddress })}/>
         <TextInput placeholder="Password" secureTextEntry={true} style={styles.textBox} onChangeText={(password) => this.setState({ password })}/>
-        <Button 
+        <LoginButton 
           title="LoginButton" size="sm" 
           // onPress={() => this.checkTextInput(), 
           //   this.handleLogin(),
@@ -127,11 +127,11 @@ const styles = StyleSheet.create({
   },
 });
 
-// const LoginButton = ({ onPress, title }) => (
-//   <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>
-//     <Text style={styles.loginButtonText}>Login</Text>
-//   </TouchableOpacity>
-// );
+const LoginButton = ({ onPress, title }) => (
+  <TouchableOpacity onPress={onPress} style={styles.loginButtonContainer}>
+    <Text style={styles.loginButtonText}>Login</Text>
+  </TouchableOpacity>
+);
 // const ForgotPasswordButton = ({ onPress, title }) => (
 //   <TouchableOpacity onPress={onPress} style={styles.forgotPasswordContainer}>
 //     <Text style={styles.forgotPasswordText}>Forgot password?</Text>
