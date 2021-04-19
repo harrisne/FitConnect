@@ -15,7 +15,7 @@ function SettingsScreen({navigation}) {
         <StatusBar style="auto" />
         <Text style={styles.titleText}>Settings</Text>
         <Button
-            title= "Book appointment testing"
+            title= "Book appointment"
             onPress={() => navigation.navigate('RequestAppointment')}>
         </Button>
         <Button
@@ -24,13 +24,13 @@ function SettingsScreen({navigation}) {
             onPress={() => navigation.navigate('My Appointments')}>
         </Button>
         <Button
-            title="Time input example (temp)"
+            title="Time input"
             size="sm"
             onPress={() => navigation.navigate('Testing')}>
         </Button>
 
 
-        <Text style={styles.subtitleText}> Trainer Pages (testing) </Text>
+        <Text style={styles.subtitleText}> Trainer Pages </Text>
         <Button
             title="Edit Trainer Profile"
             size="sm"

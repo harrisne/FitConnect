@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Text, Title } from 'react-native'
+import { StyleSheet, View, Button, Text, Title } from 'react-native'
 import { TextInput } from 'react-native-paper';
 import firebase from 'firebase'
 import { auth, firestore } from '../../config/firebase/config';
@@ -34,8 +34,6 @@ export default function SaveAppToFirebase(props, {navigation}) {
 
         const taskCompleted = () => {
             task.snapshot.ref.getDownloadURL().then((snapshot) => {
-                //saveApptData(snapshot);
-                //console.log(snapshot)
             })
         }
 
@@ -67,15 +65,41 @@ export default function SaveAppToFirebase(props, {navigation}) {
     return (
         <View style = {{flex: 1}}>
             {/* <Title>Confirm Appointment</Title> */}
-            <Text> {trainerName} is the current trainer</Text>
-            <Text> {startTime.toString()} is the start time</Text>
-            <Text> {endTime.toString()} is the end time</Text>
+            <Text style={styles.titleText}> Confirm appointment with {trainerName}</Text>
+            {/* <Text style={styles.bodyText}> {startTime.toString()} is the start time</Text>
+            <Text style={styles.bodyText}> {endTime.toString()} is the end time</Text> */}
+            <Text style={styles.bodyText}> Date: April 19, 2021</Text>
+            <Text style={styles.bodyText}> Start time: 7:00 AM</Text>
+            <Text style={styles.bodyText}> End time: 8:00 AM</Text>
             <TextInput
                 placeholder="Add appointment details . . ."
                 onChangeText = {(details) => setDetails(details)}
             />
 
-            <Button title="Save to firebase" onPress={() => saveApptData()}/>
+            <Button title="Confirm" onPress={() => saveApptData()}/>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    titleText: {
+      fontSize: 15,
+      //color: "#ff1c99",
+      //fontWeight: "bold",
+      alignSelf: "center",
+      marginTop: 70,
+      marginBottom: 30,
+      marginLeft: 10, 
+      marginRight: 10
+    },
+    bodyText: {
+        fontSize: 15,
+        //color: "#ff1c99",
+        //fontWeight: "bold",
+        alignSelf: "center",
+        marginTop: 20,
+        marginBottom: 20,
+        marginLeft: 10, 
+        marginRight: 10
+      },
+});

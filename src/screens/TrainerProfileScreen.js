@@ -142,12 +142,17 @@ class TrainerProfile extends Component {
                 </View>
               </View>
             </Modal> */}
+           <Button
+            title= "Request Appointment"
+            onPress={() => this.props.nav.navigate("Request Appointment")}>
+          </Button>
           </SafeAreaView>
           {/* <TempButton
             title="EDIT PROFILE"
             size="sm"
             onPress={() => {this.props.navigation.navigate('TrainerTimesScreen')}}>
           </TempButton> */}
+
 
 
           <VideoChatButton></VideoChatButton>

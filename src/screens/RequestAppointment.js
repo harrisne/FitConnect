@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
-import { View, Title, Button, Text } from 'react-native'
+import { StyleSheet, View, Title, Button, Text } from 'react-native'
 import { TextInput } from 'react-native-paper';
 import { auth } from '../../config/firebase/config';
 
@@ -9,11 +9,6 @@ export default function RequestAppointment({navigation}) {
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
     const userUID = auth.currentUser.uid;
-
-    // const pickTime = async () => {
-    //     const johnBrownUID = OHyZuePg1dhIjFOiOiyw;
-    //     setAppointment(johnBrownUID);
-    // }
 
     const dateformat = () => {
         let date = new Date();
@@ -43,7 +38,7 @@ export default function RequestAppointment({navigation}) {
      
     return (
         <View>
-            <Text>We are on John Brown's profile screen </Text>
+            <Text style={styles.titleText}>Request appointment from John Brown </Text>
             {/* <Button title="SetTrainer" onPress = {() => pickTime()}/> */}
             <TextInput
                 label="Start time"
@@ -59,7 +54,7 @@ export default function RequestAppointment({navigation}) {
             />
 
             <Button title="Save" onPress = {() =>
-                navigation.navigate('SaveApptToFirebase', {
+                navigation.navigate("Confirm Appointment", {
                     startTime,
                     endTime,
                     trainerUID: 'OHyZuePg1dhIjFOiOiyw'
@@ -68,5 +63,18 @@ export default function RequestAppointment({navigation}) {
     );
 
 }
+
+const styles = StyleSheet.create({
+    titleText: {
+      fontSize: 20,
+      //color: "#ff1c99",
+      //fontWeight: "bold",
+      alignSelf: "center",
+      marginTop: 70,
+      marginBottom: 70,
+      marginLeft: 10, 
+      marginRight: 10
+    },
+});
 
 //an appointment needs a trainer, user, start, and end time

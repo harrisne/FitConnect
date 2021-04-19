@@ -17,8 +17,8 @@ const SettingsNavigator = () => (
     <Stack.Screen name="AvailabilityScreen" component={AvailabilityScreen} />
     <Stack.Screen name="Testing" component={Testing} /> 
     <Stack.Screen name="My Appointments" component={userAppointments} />
-    <Stack.Screen name="RequestAppointment" component={RequestAppointment} />
-    <Stack.Screen name="SaveApptToFirebase" component={SaveApptToFirebase} />
+    <Stack.Screen name="Request Appointment" component={RequestAppointment} />
+    <Stack.Screen name="Confirm Appointment" component={SaveApptToFirebase} />
     
   </Stack.Navigator>
 );
