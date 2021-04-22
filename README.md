@@ -13,7 +13,7 @@ FitConnect is an application that provides a platform for users to schedule appo
 
 1. First you need to make sure that Node.js is installed on your machine. You can install Node.js from [here](https://nodejs.org/en/download/).
 
-1. Navigate to the app directory. <cd ./FitConnect>
+1. Navigate to the app directory. `cd ./FitConnect`
 
 1. Install Dependencies `sudo npm install`
 
