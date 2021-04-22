@@ -9,7 +9,7 @@ Back end: Firebase
 
 FitConnect is an application that provides a platform for users to schedule appointments with fitness trainers. 
 
-# Running the Application
+## Running the Application
 
 1. First you need to make sure that Node.js is installed on your machine. You can install Node.js from [here](https://nodejs.org/en/download/).
 
