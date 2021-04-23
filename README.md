@@ -24,4 +24,8 @@ FitConnect is an application that provides a platform for users to schedule appo
 * To run an iOS application use `npm run ios` or `expo start --ios`
 * To run an Android application use `npm run android` or `expo start --android`
 
+## Release Guide
+This release we added functionality to both the front and back end. We further integrated the cloud firebase backend with the react native front end by requiring user accounts upon login. At the beginning of the semester, we promised our client a funcitonal messaging and video interfacing system, but we were unable to complete it in our sprints. 
+We plan to release a front-end mockup of the messaging platform without functionality for demonstration purposes. 
+
 Zenhub: https://app.zenhub.com/workspaces/jie-0319-60074353b0c1a5001116fd03/board?repos=331104101
