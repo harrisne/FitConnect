@@ -46,9 +46,7 @@ Features:
 1. Users can sign up as a trainer or trainee 
 2. Users can select times of availability for days that work for them using the calendar tool 
 3. Trainees can select trainers that they prefer at the times that they are available 
-
-
-
+4. Users can edit their profile to update any necessary information entered during signup
 
 
 Zenhub: https://app.zenhub.com/workspaces/jie-0319-60074353b0c1a5001116fd03/board?repos=331104101
