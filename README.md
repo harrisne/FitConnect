@@ -1,5 +1,5 @@
-# FitConnect
-JIE 0319 Spring 2021
+# FitConnect version #5
+JIE 0319 Spring 2021 
 
 Team members: Allen Averbukh, Nicole Harris, Princeton Henry, and William Sheppard
 
@@ -31,12 +31,23 @@ FitConnect is an application that provides a platform for users to schedule appo
 
 * If there is trouble opening the simulator, check the build script to verify that the computer's IP address was properly registered. 
 
+* If the simulator freezes upon loading the javascript files to run the app, close the app and run the commands from "Run the app" again. Restart the Expo Go app on mobile if attempting to run on mobile. 
+
+* Visit https://reactnative.dev/docs/troubleshooting for more details if other issues arise in setting up React Native environment 
+
 
 ## Release Guide
-This release we added functionality to both the front and back end. Specifically, we enabled the Cloud Firebase database to update when trainees and trainers select their time of availabilities. Furthermore, we made it so that users need to have created an account and thus registered to the database in order to successfully login. 
+This release we added functionality to both the front-end and back-end. Specifically, we enabled the Cloud Firebase database to update when trainees and trainers select their time of availabilities. Furthermore, we made it so that users need to have created an account and thus registered to the database in order to successfully login. 
 
 There are currently no known bugs or defects with the application. However, at the beginning of the semester, we promised our client a functional messaging and video interfacing system, but we were unable to complete it in past sprints. 
 We plan to release a front-end mockup of the messaging platform without functionality for demonstration purposes. 
+
+Defects from Previous Versions that have been fixed: 
+1. Users used to be able to log into the app without signup up
+2. Users used to be able to select avaiable times that would span over 24 hours 
+3. Users used to be able to enter passwords that do not match upon signup and successfully form an account 
+4. Front-end used to be completely separate from back-end and cause user data to not be stored. 
+
 
 
 
