@@ -11,6 +11,8 @@ FitConnect is an application that provides a platform for users to schedule appo
 
 ## Running the Application
 
+Hardware requirements: 8gb of available ram 
+
 1. First you need to make sure that Node.js is installed on your machine. You can install Node.js from [here](https://nodejs.org/en/download/).
 
 1. Navigate to the app directory. `cd ./FitConnect`
@@ -19,7 +21,7 @@ FitConnect is an application that provides a platform for users to schedule appo
 
 1. Install Expo Go on phone from Apple or Android Store if running on phone 
 
-1. Run the app
+1. Run the app 
 
 * To start a general server and get QR code use `npm start`
 * To run a web application use `npm run web` or `expo start --web`
@@ -27,6 +29,8 @@ FitConnect is an application that provides a platform for users to schedule appo
 * To run an Android application use `npm run android` or `expo start --android`
 
 ##Troubleshooting 
+* If there is an error message saying that Xcode is not found when running an iPhone simulator, then install the Xcode app from the Apple Store (MacOS users only). 
+
 * If there is trouble opening the applicaton on mobile, make sure the phone and computer are on the same network. If they are, attempt to connect the phone to the computer through a USB cable to ensure that the same network is being used by the devices. 
 
 * If there is trouble opening the simulator, check the build script to verify that the computer's IP address was properly registered. 
