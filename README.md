@@ -12,6 +12,9 @@ FitConnect is an application that provides a platform for users to schedule appo
 ## Running the Application
 
 Hardware requirements: 8gb of available ram 
+macOS requirements: Mac devices with versions High Sierra (10.13) or newer
+windows requirements: if a Windows10 device is being used, then you must use Windows version 10.0.16299.0 
+
 
 1. First you need to make sure that Node.js is installed on your machine. You can install Node.js from [here](https://nodejs.org/en/download/).
 
@@ -29,7 +32,7 @@ Hardware requirements: 8gb of available ram
 * To run an Android application use `npm run android` or `expo start --android`
 
 ##Troubleshooting 
-* If there is an error message saying that Xcode is not found when running an iPhone simulator, then install the Xcode app from the Apple Store (MacOS users only). 
+* If there is an error message saying that Xcode is not found when running an iPhone simulator, then install the Xcode app from the Apple Store (macOS users only). 
 
 * If there is trouble opening the applicaton on mobile, make sure the phone and computer are on the same network. If they are, attempt to connect the phone to the computer through a USB cable to ensure that the same network is being used by the devices. 
 
