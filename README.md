@@ -1,4 +1,4 @@
-# FitConnect version #5
+# FitConnect Version #1.0 
 JIE 0319 Spring 2021 
 
 Team members: Allen Averbukh, Nicole Harris, Princeton Henry, and William Sheppard
@@ -42,11 +42,11 @@ This release we added functionality to both the front-end and back-end. Specific
 There are currently no known bugs or defects with the application. However, at the beginning of the semester, we promised our client a functional messaging and video interfacing system, but we were unable to complete it in past sprints. 
 We plan to release a front-end mockup of the messaging platform without functionality for demonstration purposes. 
 
-Defects from Previous Versions that have been fixed: 
-1. Users used to be able to log into the app without signup up
-2. Users used to be able to select avaiable times that would span over 24 hours 
-3. Users used to be able to enter passwords that do not match upon signup and successfully form an account 
-4. Front-end used to be completely separate from back-end and cause user data to not be stored. 
+Features: 
+1. Users can sign up as a trainer or trainee 
+2. Users can select times of availability for days that work for them using the calendar tool 
+3. Trainees can select trainers that they prefer at the times that they are available 
+
 
 
 
