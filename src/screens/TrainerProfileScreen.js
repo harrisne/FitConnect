@@ -31,11 +31,11 @@ function getAppointments() {
   // let c = showCollection('appointment');
   // console.log(c);
   
-  return ['2021-04-02', '2021-04-04', '2021-04-05'];
+  return ['2021-04-29', '2021-04-30'];
 }
 
 function getUnavailableDays() {
-  return ['2021-04-06', '2021-04-07', '2021-04-10'];
+  return ['2021-04-06', '2021-04-07', '2021-04-10', '2021-04-15', '2021-04-19', '2021-04-20'];
 }
 
 
