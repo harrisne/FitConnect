@@ -48,8 +48,7 @@ import {connect} from 'react-redux'
 function userAppointments(props) {
     const {currentUser, appointments } = props;
     const [selectedId, setSelectedId] = useState(null);
-    // const [selectedDay, setSelectedDay] = useState([true, false, false, false, false, false, false]);
-    const [selectedDay, setSelectedDay] = useState([[true, false, false, false, false, false, false, false, false, false, false], 0]);
+    const [selectedDay, setSelectedDay] = useState([[true, false, false, false, false, false, false], 0]);
     console.log(appointments);
 
     const renderItem = ({ item }) => {
@@ -76,23 +75,14 @@ function userAppointments(props) {
     const days = ['SUN','MON','TUES','WED','THUR','FRI','SAT'];
     var currentDay = showCurrentDayNumber();
     var currentDate = showCurrentDate();
-    // var state0 = [true, false, false, false, false, false, false, false, false, false, false];
-    // var state1 = [false, true, false, false, false, false, false];
-    // var state2 = [false, false, true, false, false, false, false];
-    // var state3 = [false, false, false, true, false, false, false];
-    // var state4 = [false, false, false, false, true, false, false];
-    // var state5 = [false, false, false, false, false, true, false];
-    // var state6 = [false, false, false, false, false, false, true];
-    var state0 = [true, false, false, false, false, false, false, false, false, false, false];
-    var state1 = [false, true, false, false, false, false, false, false, false, false, false];
-    var state2 = [false, false, true, false, false, false, false, false, false, false, false];
-    var state3 = [false, false, false, true, false, false, false, false, false, false, false];
-    var state4 = [false, false, false, false, true, false, false, false, false, false, false];
-    var state5 = [false, false, false, false, false, true, false, false, false, false, false];
-    var state6 = [false, false, false, false, false, false, true, false, false, false, false];
-    var state9 = [false, false, false, false, false, false, false, false, false, true, false];
-    var state10 = [false, false, false, false, false, false, false, false, false, false, true];
-    var stateNone = [false, false, false, false, false, false, false, false, false, false, false];
+    var state0 = [true, false, false, false, false, false, false];
+    var state1 = [false, true, false, false, false, false, false];
+    var state2 = [false, false, true, false, false, false, false];
+    var state3 = [false, false, false, true, false, false, false];
+    var state4 = [false, false, false, false, true, false, false];
+    var state5 = [false, false, false, false, false, true, false];
+    var state6 = [false, false, false, false, false, false, true];
+    var stateNone = [false, false, false, false, false, false, false];
 
     if (appointments == []) {
         <View style = {{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -114,14 +104,12 @@ function userAppointments(props) {
                   <Text style={styles.sectionTitleText}>Quick Calendar</Text>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     <CalendarButton onPress={() => setSelectedDay([state0, 0])} selected={selectedDay[0][0]} title="today" day={days[currentDay%7]} date={currentDate}></CalendarButton>
-                    <CalendarButton onPress={() => setSelectedDay([state1, 1])} selected={selectedDay[0][1]} title="today1" day={days[(currentDay+1)%7]} date={currentDate+1}></CalendarButton>
-                    <CalendarButton onPress={() => setSelectedDay([state2, 2])} selected={selectedDay[0][2]} title="today2" day={days[(currentDay+2)%7]} date={currentDate+2}></CalendarButton>
-                    <CalendarButton onPress={() => setSelectedDay([state3, 3])} selected={selectedDay[0][3]} title="today3" day={days[(currentDay+3)%7]} date={currentDate+3}></CalendarButton>
-                    <CalendarButton onPress={() => setSelectedDay([state4, 4])} selected={selectedDay[0][4]} title="today4" day={days[(currentDay+4)%7]} date={currentDate+4}></CalendarButton>
-                    <CalendarButton onPress={() => setSelectedDay([state5, 5])} selected={selectedDay[0][5]} title="today5" day={days[(currentDay+5)%7]} date={currentDate+5}></CalendarButton>
-                    <CalendarButton onPress={() => setSelectedDay([state6, 6])} selected={selectedDay[0][6]} title="today6" day={days[(currentDay+6)%7]} date={currentDate+6}></CalendarButton>
-                    <CalendarButton onPress={() => setSelectedDay([state9, 9])} selected={selectedDay[0][9]} title="today9" day={days[(currentDay+9)%7]} date={currentDate+9}></CalendarButton>
-                    <CalendarButton onPress={() => setSelectedDay([state10, 10])} selected={selectedDay[0][10]} title="today10" day={days[(currentDay+10)%7]} date={currentDate+10}></CalendarButton>
+                    <CalendarButton onPress={() => setSelectedDay([state1, 1])} selected={selectedDay[0][1]} title="today1" day={days[(currentDay+1)%7]} date={(currentDate+1>30) ? (currentDate+1)%31+1 : currentDate+1}></CalendarButton>
+                    <CalendarButton onPress={() => setSelectedDay([state2, 2])} selected={selectedDay[0][2]} title="today2" day={days[(currentDay+2)%7]} date={(currentDate+2>30) ? (currentDate+2)%31+1 : currentDate+2}></CalendarButton>
+                    <CalendarButton onPress={() => setSelectedDay([state3, 3])} selected={selectedDay[0][3]} title="today3" day={days[(currentDay+3)%7]} date={(currentDate+3>30) ? (currentDate+3)%31+1 : currentDate+3}></CalendarButton>
+                    <CalendarButton onPress={() => setSelectedDay([state4, 4])} selected={selectedDay[0][4]} title="today4" day={days[(currentDay+4)%7]} date={(currentDate+4>30) ? (currentDate+4)%31+1 : currentDate+4}></CalendarButton>
+                    <CalendarButton onPress={() => setSelectedDay([state5, 5])} selected={selectedDay[0][5]} title="today5" day={days[(currentDay+5)%7]} date={(currentDate+5>30) ? (currentDate+5)%31+1 : currentDate+5}></CalendarButton>
+                    <CalendarButton onPress={() => setSelectedDay([state6, 6])} selected={selectedDay[0][6]} title="today6" day={days[(currentDay+6)%7]} date={(currentDate+6>30) ? (currentDate+6)%31+1 : currentDate+6}></CalendarButton>
                 </ScrollView>
                 <SafeAreaView style={{flexDirection:"row"}}>
                     <Text style={styles.sectionTitleText}>Appointments</Text>

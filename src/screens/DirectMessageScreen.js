@@ -13,7 +13,7 @@ function DirectMessageScreen({navigation}) {
     navigation.pop();
   };
   const pressName = () => {
-    navigation.navigate("TrainerProfileScreen")
+    navigation.navigate("TrainerProfile")
   }
 
 
@@ -44,10 +44,12 @@ function DirectMessageScreen({navigation}) {
       <TouchableOpacity onPress={pressBackButton} style = {{marginLeft: 30, marginBottom: 0, marginTop: 5}}>
         <Text style = {{fontSize: 25, color: "#ff1c99"}}>&#8592;</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={pressName}>
       <SafeAreaView style={{flexDirection: 'row'}}>
-        <Image source={require("../assets/johnBrown.jpg")} style={styles.profilePic} />
-        <Text style={styles.nameText}>John Brown</Text>
+          <Image source={require("../assets/johnBrown.jpg")} style={styles.profilePic} />
+          <Text style={styles.nameText}>John Brown</Text>
       </SafeAreaView>
+      </TouchableOpacity>
 
       <SafeAreaView style={styles.messagesBackground}>
         {/* <GiftedChat 
