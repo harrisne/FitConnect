@@ -166,7 +166,7 @@ class TrainerPreview extends Component {
 
 class Toggle extends Component {
   trainers = [
-  <TrainerPreview name="John Brown" onPress={this.props.pressTrainerProfile} exerciseType1="Strength" exerciseType2="Aerobic" rating="3" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="johnBrown"></TrainerPreview>,
+  <TrainerPreview name="John Brown" onPress={this.props.pressTrainerProfile} exerciseType1="Strength" exerciseType2="Aerobic" rating="5" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="johnBrown"></TrainerPreview>,
   <TrainerPreview name="Another Trainer" exerciseType1="Strength" exerciseType2="Flexibility" rating="2" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
   <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="5" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
   <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="4" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>

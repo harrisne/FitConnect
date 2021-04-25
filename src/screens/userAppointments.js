@@ -56,8 +56,8 @@ function userAppointments(props) {
         // <Item title={item.trainerName} />
         const backgroundColor = item.id === selectedId ? 'grey' : 'white';
         const color = item.id === selectedId ? 'black' : 'black';
-        var itemDate = item.startTime.toDate().getDate();
-        var itemMonth = item.startTime.toDate().getMonth()+1;
+        // var itemDate = item.startTime.toDate().getDate();
+        // var itemMonth = item.startTime.toDate().getMonth()+1;
 
 
 

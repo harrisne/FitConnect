@@ -8,6 +8,7 @@ import SearchScreen from "../screens/SearchScreen";
 import SearchNavigator from "./SearchNavigator";
 import SettingsNavigator from "./SettingsNavigator";
 import HomeNavigator from "./HomeNavigator";
+import MessagesNavigator from "./MessagesNavigator";
 
 
 function MessagesScreen() {
@@ -44,7 +45,7 @@ const TabNavigator = () => (
                 size = {size} color = {color}/>
             }}/>
         <Tab.Screen 
-            name="Messages" component={MessagesScreen} 
+            name="Messages" component={MessagesNavigator} 
             options={{
                 tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="email" 
                 size = {size} color = {color}/>

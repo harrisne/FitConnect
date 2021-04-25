@@ -83,9 +83,13 @@ class TrainerProfile extends Component {
     })
     this.setState({calendarDays: markedEvents});
   };
+  pressMessageButton = () => {
+    this.props.nav.navigate("DirectMessage");
+  };
   pressBackButton = () => {
-    this.props.nav.navigate("SearchScreen");
-  }
+    this.props.nav.pop();
+  };
+
   render() {
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -98,7 +102,7 @@ class TrainerProfile extends Component {
             <Text style={{marginTop: 15, fontSize: 26, fontWeight: "200" }}>John Brown</Text>
             <Text style={{marginTop: 7, fontSize: 15, fontWeight: "200" }}>Strength Training</Text>
             <Text style={{fontSize: 15, fontWeight: "200" }}>Aeorbic Training</Text>
-            <MessageButton></MessageButton>
+            <MessageButton onPress={this.pressMessageButton}></MessageButton>
           </View>
         </SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false} style={{marginTop: 40}}>
