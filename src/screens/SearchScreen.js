@@ -169,7 +169,9 @@ class Toggle extends Component {
   <TrainerPreview name="John Brown" onPress={this.props.pressTrainerProfile} exerciseType1="Strength" exerciseType2="Aerobic" rating="5" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="johnBrown"></TrainerPreview>,
   <TrainerPreview name="Another Trainer" exerciseType1="Strength" exerciseType2="Flexibility" rating="2" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
   <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="5" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
-  <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="4" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>
+  <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="4" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
+  <TrainerPreview name="Another Trainer" exerciseType1="Flexibility" exerciseType2="Aerobic" rating="4" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>,
+  <TrainerPreview name="Another Trainer" exerciseType1="Strength" exerciseType2="Aerobic" rating="3" experience="Enthusiast" consultation="Mon, Tues, Wed, Thurs, Fri" photo="noPic"></TrainerPreview>
   ];
   constructor(props) {
     super(props);
@@ -223,7 +225,7 @@ class Toggle extends Component {
             toggleSwitch3 = {this.toggleSwitch3} switch3Value = {this.state.switch3Value}
           ></Filters>
         )}
-        <ScrollView style={{ marginTop: 15, marginBottom: 2 }}>
+        <ScrollView style={{ marginTop: 15, marginBottom: 2, height: Dimensions.get('window').height - 120 }} showsVerticalScrollIndicator={false}>
           {checkDisplay(this.trainers[0].props.exerciseType1, this.trainers[0].props.exerciseType2, this.state.s1, this.state.s2, this.state.s3) && ( 
             this.trainers[0]
           )}
@@ -235,6 +237,12 @@ class Toggle extends Component {
           )}
           {checkDisplay(this.trainers[3].props.exerciseType1, this.trainers[3].props.exerciseType2, this.state.s1, this.state.s2, this.state.s3) && ( 
             this.trainers[3]
+          )}
+          {checkDisplay(this.trainers[4].props.exerciseType1, this.trainers[4].props.exerciseType2, this.state.s1, this.state.s2, this.state.s3) && ( 
+            this.trainers[4]
+          )}
+          {checkDisplay(this.trainers[5].props.exerciseType1, this.trainers[5].props.exerciseType2, this.state.s1, this.state.s2, this.state.s3) && ( 
+            this.trainers[5]
           )}
         </ScrollView>
       </SafeAreaView>
