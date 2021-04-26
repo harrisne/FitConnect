@@ -47,7 +47,7 @@ function DirectMessageScreen({navigation}) {
       <TouchableOpacity onPress={pressName}>
       <SafeAreaView style={{flexDirection: 'row'}}>
           <Image source={require("../assets/johnBrown.jpg")} style={styles.profilePic} />
-          <Text style={styles.nameText}>John Brown</Text>
+          <Text style={styles.nameText}>John Brown</Text> <VideoChatButton></VideoChatButton>
       </SafeAreaView>
       </TouchableOpacity>
 
@@ -103,6 +103,12 @@ function DirectMessageScreen({navigation}) {
 }
 
 
+const VideoChatButton = ({ onPress }) => (
+  <TouchableOpacity onPress={onPress} style={styles.videoChatButtonContainer}>
+    <Text style={styles.videoChatButtonText}>  Video Call  </Text>
+  </TouchableOpacity>
+);
+
 
 const styles = StyleSheet.create({
   background: {
@@ -124,11 +130,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     borderRadius: 50, 
     flex:1,
-
-    // ** option 1 **
-    // backgroundColor: '#fff',
-
-    // ** option 2 **
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: "rgba(0, 0, 0, 0.2)",
@@ -147,13 +148,27 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 20,
     fontWeight: "bold",
-
-    // ** option 1 **
-
-
-    // ** option 2 **
     color: "#ff1c99"
 
+  },
+  videoChatButtonContainer: {
+    elevation: 8,
+    backgroundColor: "#d3d3d3",
+    borderRadius: 30,
+    paddingVertical: 16,
+    paddingHorizontal: 12,
+    // marginTop: 25,
+    marginLeft: 70,
+    marginRight: 10,
+    alignSelf: "right",
+    // marginBottom: 30,
+  },
+  videoChatButtonText: {
+    fontSize: 17,
+    color: "#fff",
+    fontWeight: "600",
+    alignSelf: "center",
+    textTransform: "uppercase",
   },
 });
 

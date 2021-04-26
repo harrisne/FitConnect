@@ -66,11 +66,11 @@ export default function SaveAppToFirebase(props, {navigation}) {
         <View style = {{flex: 1}}>
             {/* <Title>Confirm Appointment</Title> */}
             <Text style={styles.titleText}> Confirm appointment with {trainerName}</Text>
-            {/* <Text style={styles.bodyText}> {startTime.toString()} is the start time</Text>
-            <Text style={styles.bodyText}> {endTime.toString()} is the end time</Text> */}
-            <Text style={styles.bodyText}> Date: April 19, 2021</Text>
+            <Text style={styles.bodyText}> {startTime.toString()} is the start time</Text>
+            <Text style={styles.bodyText}> {endTime.toString()} is the end time</Text>
+            {/* <Text style={styles.bodyText}> Date: April 19, 2021</Text>
             <Text style={styles.bodyText}> Start time: 7:00 AM</Text>
-            <Text style={styles.bodyText}> End time: 8:00 AM</Text>
+            <Text style={styles.bodyText}> End time: 8:00 AM</Text> */}
             <TextInput
                 placeholder="Add appointment details . . ."
                 onChangeText = {(details) => setDetails(details)}

@@ -14,30 +14,20 @@ function SettingsScreen({navigation}) {
     <SafeAreaView>
         <StatusBar style="auto" />
         <Text style={styles.titleText}>Settings</Text>
-        <Button
-            title= "Book appointment"
-            onPress={() => navigation.navigate('RequestAppointment')}>
-        </Button>
-        <Button
-            title="User's current appointments page"
-            size="sm"
-            onPress={() => navigation.navigate('My Appointments')}>
-        </Button>
+
         <Button
             title="Time input"
             size="sm"
             onPress={() => navigation.navigate('Testing')}>
         </Button>
 
-
-        <Text style={styles.subtitleText}> Trainer Pages </Text>
         <Button
-            title="Edit Trainer Profile"
+            title="Edit Profile Info"
             size="sm"
             onPress={() => navigation.navigate('MyAccountTrainer')}>
         </Button>
         <Button
-            title="Set Trainer's availabilities"
+            title="Set Availabilities"
             size="sm"
             onPress={() => navigation.navigate('AvailabilityScreen')}>
 
@@ -50,11 +40,7 @@ function SettingsScreen({navigation}) {
             onPress={() => onLogout()}>
 
         </Button>
-        {/* <SignUpButton
-            title="EDIT PROFILE"
-            size="sm"
-            onPress={() => navigation.navigate('MyAccountTrainer')}>
-        </SignUpButton> */}
+
 
     </SafeAreaView>
   );

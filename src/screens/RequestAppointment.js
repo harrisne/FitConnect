@@ -4,6 +4,7 @@ import { StyleSheet, View, Title, Button, Text } from 'react-native'
 import { TextInput } from 'react-native-paper';
 import { auth } from '../../config/firebase/config';
 
+
 export default function RequestAppointment({navigation}) {
     const [trainerUID, SetTrainerUID] = useState('');
     const [startTime, setStartTime] = useState("");
@@ -34,12 +35,23 @@ export default function RequestAppointment({navigation}) {
         date.setMinutes(0);
         return date;
     }
+
+    function setDayDate(date, day) {
+        date.setDay(day);
+        return date;
+    }
    
      
     return (
         <View>
             <Text style={styles.titleText}>Request appointment from John Brown </Text>
             {/* <Button title="SetTrainer" onPress = {() => pickTime()}/> */}
+            <TextInput
+                label="Select date"
+                value={startTime.toString()}
+                onChangeText={startTime => setStartTime(convertSingleDigitToDateTime(startTime))}
+                mode="flat"
+            />
             <TextInput
                 label="Start time"
                 value={startTime}
