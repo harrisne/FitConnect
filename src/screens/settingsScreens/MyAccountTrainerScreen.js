@@ -5,8 +5,8 @@ import {insertIntoTrainerDatabase, addTrainerRate, addTrainerDescription} from '
 
 function MyAccountTrainerScreen({navigation}) {
   let state = {
-    fullName: 'Jannis Doer',
-    emailAddress: 'janis11@gmail.com',
+    fullName: 'Expo Demo',
+    emailAddress: 'gg@gmail.com',
     sex: 'female',
     age: '41',
     height: '5\'2"',
@@ -46,29 +46,12 @@ function MyAccountTrainerScreen({navigation}) {
             style = {styles.container}>  
             
             <View>
-              <Text style = {styles.text}> Edit Account Information (Trainer) </Text>
+              <Text style = {styles.text}> Edit Account Information</Text>
             </View>
             <Text style={styles.bodyText}>Full Name: </Text>
             <TextInput style = {styles.input}        
               value={nameValue}
               onChangeText={text => onNameText(text)}  />
-
-            <Text style={styles.bodyText}>Profile Descritption: </Text>
-            <TextInput style = {{    margin: 16,
-                height: 44,
-                borderWidth: 0.7,
-                borderRadius: 13,
-                borderColor: "black",
-                fontSize: 16,
-                multiline: true}}
-              onChangeText={text => onChangeDescriptionText(text)}
-              value = {descriptionValue}/>
-
-            <Text style={styles.bodyText}>Rate: (ex. $20/hr)</Text>
-            <TextInput style={styles.input}
-              onChangeText={text => onChangeRateText(text)}
-              value={rateValue}
-            />
               
             <Text style={styles.bodyText}>Email Address: </Text>
            <TextInput style = {styles.input}
@@ -95,14 +78,6 @@ function MyAccountTrainerScreen({navigation}) {
               value = {weightValue}
               onChangeText={text => onWeightText(text)}
               />  
-
-      <AddAvailabilitesButton
-            size="sm"
-            style={styles.loginButtonText}
-            onPress={
-              () => { handleSignUp(); navigation.navigate('Availability');}
-             }>
-      </AddAvailabilitesButton>
 
       <DoneButton
             size="sm"

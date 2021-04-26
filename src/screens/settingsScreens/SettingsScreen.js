@@ -16,12 +16,6 @@ function SettingsScreen({navigation}) {
         <Text style={styles.titleText}>Settings</Text>
 
         <Button
-            title="Time input"
-            size="sm"
-            onPress={() => navigation.navigate('Testing')}>
-        </Button>
-
-        <Button
             title="Edit Profile Info"
             size="sm"
             onPress={() => navigation.navigate('MyAccountTrainer')}>

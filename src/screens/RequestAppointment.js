@@ -46,12 +46,7 @@ export default function RequestAppointment({navigation}) {
         <View>
             <Text style={styles.titleText}>Request appointment from John Brown </Text>
             {/* <Button title="SetTrainer" onPress = {() => pickTime()}/> */}
-            <TextInput
-                label="Select date"
-                value={startTime.toString()}
-                onChangeText={startTime => setStartTime(convertSingleDigitToDateTime(startTime))}
-                mode="flat"
-            />
+
             <TextInput
                 label="Start time"
                 value={startTime}
