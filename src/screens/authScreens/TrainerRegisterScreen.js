@@ -3,9 +3,10 @@ import { View, Text, Button, TextInput, StyleSheet, Pressable, Alert, TouchableO
 import {auth} from '../../../config/firebase/database'
 import {insertIntoTrainerDatabase} from '../../../config/firebase/database'
 
+
 class Inputs extends Component {
 
-   render({navigation}) {
+   render() {
       return (
         <View>
           <Text style = {styles.text}> Trainer Registration is under construction </Text>
@@ -33,7 +34,6 @@ const styles = StyleSheet.create({
    text: {
       textAlign: 'center',
       margin: 12,
-      fontWeight: "bold",
       color: '#ff1c99',
       fontSize: 36
   },
